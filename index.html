@@ -882,9 +882,9 @@
       </div>
     </div>
 
-    <!-- Indicador do Super Beijo da Penélope (quando ativo) -->
-    <div id="kiss-power-hud" style="display: none; position: absolute; top: 68px; left: 0; right: 0; margin: 0 auto; width: 220px; background: rgba(244, 63, 94, 0.9); border: 2px solid #fff; border-radius: 20px; padding: 4px 10px; text-align: center; font-size: 11px; font-weight: 900; color: #fff; z-index: 40; box-shadow: 0 0 15px rgba(244, 63, 94, 0.7); animation: pulseBanner 1s infinite alternate;">
-      💋 SUPER TURBO DO AMOR DA KÁSSIA! 💖⚡
+    <!-- Indicador do Super Coração da Kássia (quando ativo) -->
+    <div id="kiss-power-hud" style="display: none; position: absolute; top: 68px; left: 0; right: 0; margin: 0 auto; width: 230px; background: rgba(220, 38, 38, 0.92); border: 2px solid #fff; border-radius: 20px; padding: 4px 10px; text-align: center; font-size: 11px; font-weight: 900; color: #fff; z-index: 40; box-shadow: 0 0 16px rgba(239, 68, 68, 0.85); animation: pulseBanner 1s infinite alternate;">
+      ❤️ SUPER CORAÇÃO TURBO DA KÁSSIA! ⚡
     </div>
 
     <!-- Canvas do Jogo -->
@@ -1365,9 +1365,9 @@
           turboGain.connect(audioCtx.destination);
           turboOsc.start();
 
-          // 5. CANAL MASTER DE BGM (MÚSICA ARCADE ENERGÉTICA E NÍTIDA)
+          // 5. CANAL MASTER DE BGM (MÚSICA ARCADE ENERGÉTICA E NÍTIDA +10% VOLUME)
           bgmGain = audioCtx.createGain();
-          bgmGain.gain.setValueAtTime(0.38, audioCtx.currentTime);
+          bgmGain.gain.setValueAtTime(0.42, audioCtx.currentTime);
           bgmGain.connect(audioCtx.destination);
         }
       }
@@ -1381,7 +1381,7 @@
       }
     }
 
-    // Gerador de Trilha Sonora Arcade Synthwave
+    // Gerador de Trilha Sonora Arcade Synthwave (+10% Volume)
     function startBgm() {
       if (!soundEnabled || isBgmRunning) return;
       isBgmRunning = true;
@@ -1403,7 +1403,7 @@
             const bGain = audioCtx.createGain();
             bOsc.type = 'triangle';
             bOsc.frequency.setValueAtTime(bassFreq, curT);
-            bGain.gain.setValueAtTime(0.35, curT);
+            bGain.gain.setValueAtTime(0.38, curT);
             bGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.12);
             bOsc.connect(bGain);
             bGain.connect(bgmGain);
@@ -1419,7 +1419,7 @@
             const lGain = audioCtx.createGain();
             lOsc.type = 'sine';
             lOsc.frequency.setValueAtTime(leadFreq, curT);
-            lGain.gain.setValueAtTime(0.30, curT);
+            lGain.gain.setValueAtTime(0.33, curT);
             lGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.18);
             lOsc.connect(lGain);
             lGain.connect(bgmGain);
@@ -1435,7 +1435,7 @@
             const kGain = audioCtx.createGain();
             kOsc.frequency.setValueAtTime(140, curT);
             kOsc.frequency.exponentialRampToValueAtTime(45, curT + 0.08);
-            kGain.gain.setValueAtTime(0.38, curT);
+            kGain.gain.setValueAtTime(0.42, curT);
             kGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.08);
             kOsc.connect(kGain);
             kGain.connect(bgmGain);
@@ -1451,7 +1451,7 @@
             const hGain = audioCtx.createGain();
             hOsc.type = 'triangle';
             hOsc.frequency.setValueAtTime(1600, curT);
-            hGain.gain.setValueAtTime(0.12, curT);
+            hGain.gain.setValueAtTime(0.14, curT);
             hGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.04);
             hOsc.connect(hGain);
             hGain.connect(bgmGain);
@@ -1519,37 +1519,38 @@
         return;
       }
 
-      // 1. ÁUDIO NO GRID DE LARGADA: Marcha lenta aveludada acelerando conforme o semáforo
+      // 1. ÁUDIO NO GRID DE LARGADA: Marcha lenta encorpada acelerando com o semáforo
       if (isGridCountdown) {
-        const idleRpm = 75 + (gridRevBoost * 55); // 75Hz a 130Hz (som quente de pistão)
-        const subRpm = 42 + (gridRevBoost * 28);
-        const filterCutoff = 240 + (gridRevBoost * 120); // 240Hz a 360Hz (corta todo agudo estridente)
+        const idleRpm = 85 + (gridRevBoost * 60); // 85Hz a 145Hz (som quente de pistão)
+        const subRpm = 48 + (gridRevBoost * 30);
+        const filterCutoff = 320 + (gridRevBoost * 140); // 320Hz a 460Hz (corta todo agudo áspero)
 
         engineOsc.frequency.setTargetAtTime(idleRpm, audioCtx.currentTime, 0.04);
         if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subRpm, audioCtx.currentTime, 0.04);
         if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
 
-        const idleVolume = 0.05 + (gridRevBoost * 0.04); // Volume suave de 0.05 a 0.09
+        const idleVolume = 0.22 + (gridRevBoost * 0.16); // Volume nítido e presente de 0.22 a 0.38
         engineGain.gain.setTargetAtTime(idleVolume, audioCtx.currentTime, 0.04);
         return;
       }
 
-      // 2. ÁUDIO NA CORRIDA: Ronco suave, encorpado e esportivo
+      // 2. ÁUDIO NA CORRIDA: Ronco encorpado, esportivo e aveludado que SUPERA a música sem irritar
       const normSpeed = Math.max(0.1, Math.min(1.0, currentSpeed / 240));
-      const rpmFreq = 80 + (normSpeed * 70); // 80Hz a 150Hz
-      const subFreq = 45 + (normSpeed * 35);
-      const filterCutoff = 260 + (normSpeed * 160); // 260Hz a 420Hz (máximo conforto)
+      const rpmFreq = 88 + (normSpeed * 75); // 88Hz a 163Hz
+      const subFreq = 48 + (normSpeed * 38);
+      const filterCutoff = 340 + (normSpeed * 200); // 340Hz a 540Hz (filtro low-pass elimina ruído estridente)
 
       engineOsc.frequency.setTargetAtTime(rpmFreq, audioCtx.currentTime, 0.04);
       if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subFreq, audioCtx.currentTime, 0.04);
       if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
 
-      const targetGain = player.isBraking ? 0.05 : (isNitroActive ? 0.13 : 0.08);
+      // Volume de motor potente que supera a música de fundo com conforto:
+      const targetGain = player.isBraking ? 0.24 : ((isNitroActive || player.kissPowerTimer > 0) ? 0.54 : 0.46);
       engineGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.04);
 
-      if (isNitroActive) {
+      if (isNitroActive || player.kissPowerTimer > 0) {
         turboOsc.frequency.setTargetAtTime(260 + normSpeed * 100, audioCtx.currentTime, 0.04);
-        turboGain.gain.setTargetAtTime(0.07, audioCtx.currentTime, 0.04);
+        turboGain.gain.setTargetAtTime(0.16, audioCtx.currentTime, 0.04);
       } else {
         turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.06);
       }
@@ -1753,14 +1754,27 @@
       },
 
       update() {
-        // SUPER TURBO DO BEIJO DA PENÉLOPE CHARMOSA 💋
+        // SUPER TURBO DO CORAÇÃO DA KÁSSIA CHARMOSA ❤️
         if (this.kissPowerTimer > 0) {
           this.kissPowerTimer -= 1;
-          this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 3.0);
-          this.nitro = this.maxNitro; // Nitro infinito durante o poder do beijo
-          cameraShake = Math.max(cameraShake, 3.2);
+          this.nitro = this.maxNitro; // Nitro infinito durante o poder do coração
 
-          // Chamas rosas e douradas de super turbo
+          const targetSafeSpeed = (currentLap === TOTAL_LAPS) ? (this.maxNormalSpeed + 15) : this.maxNormalSpeed;
+
+          // Mecânica suave: Desacelera antes do poder acabar para evitar batidas bruscas!
+          if (this.kissPowerTimer > 90) {
+            // Fase de Ultra Velocidade Máxima (~265 km/h)
+            this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 3.0);
+            cameraShake = Math.max(cameraShake, 3.2);
+          } else {
+            // Últimos 1.5s: Desacelera suavemente em direção à velocidade segura antes do término do poder
+            if (this.speed > targetSafeSpeed) {
+              this.speed = Math.max(targetSafeSpeed, this.speed - 1.6);
+            }
+            cameraShake = Math.max(cameraShake, 1.2);
+          }
+
+          // Chamas vermelhas e douradas de super turbo
           if (Math.random() < 0.6) {
             spawnFlame(this.x - 13, this.y + 32);
             spawnFlame(this.x + 13, this.y + 32);
@@ -1770,7 +1784,13 @@
           if (kissHud) {
             kissHud.style.display = 'block';
             const secsLeft = (this.kissPowerTimer / 60).toFixed(1);
-            kissHud.textContent = `💋 SUPER TURBO DO AMOR ATIVO! ${secsLeft}s ⚡`;
+            if (this.kissPowerTimer > 90) {
+              kissHud.textContent = `❤️ CORAÇÃO TURBO ATIVO! ${secsLeft}s ⚡`;
+              kissHud.style.background = 'rgba(220, 38, 38, 0.92)';
+            } else {
+              kissHud.textContent = `❤️ DESACELERANDO COM SEGURANÇA... ${secsLeft}s 🛡️`;
+              kissHud.style.background = 'rgba(234, 88, 12, 0.92)';
+            }
           }
           if (this.kissPowerTimer <= 0) {
             if (kissHud) kissHud.style.display = 'none';
@@ -1817,13 +1837,13 @@
           this.tilt *= 0.76;
         }
 
-        // DESLIZE FÍSICO REAL NA POÇA DE ÓLEO DO DICK VIGARISTA
+        // DESLIZE FÍSICO NA POÇA DE ÓLEO DO DICK VIGARISTA (-30% REDUÇÃO PARA CONTROLE PERFEITO)
         if (this.slipTimer > 0) {
           this.slipTimer--;
-          // Força o kart a deslizar lateralmente pela pista!
-          this.vx += this.slipDirection * 2.8;
-          this.driftAngle = this.slipDirection * 0.50 * (this.slipTimer / 35);
-          this.tilt = this.slipDirection * 0.28;
+          // Força suave de deslizamento lateral (controlável sem jogar o kart na parede!)
+          this.vx += this.slipDirection * 1.85;
+          this.driftAngle = this.slipDirection * 0.35 * (this.slipTimer / 24);
+          this.tilt = this.slipDirection * 0.18;
           if (this.slipTimer % 3 === 0) {
             spawnSmoke(this.x, this.y + 24, '#334155');
           }
@@ -2515,26 +2535,54 @@
         item.rotation += 0.04;
 
         if (item.type === 'kiss') {
-          // Beijinho Charmoso da Penélope 💋
-          item.pulse = (item.pulse || 0) + 0.08;
-          const pulseScale = 1 + Math.sin(item.pulse) * 0.14;
+          // Coração Vermelho Pulsante da Kássia ❤️
+          item.pulse = (item.pulse || 0) + 0.14; // Batimento vivo de coração
+          const pulseScale = 1.0 + Math.sin(item.pulse) * 0.25; // Pulsa com energia de 0.75x a 1.25x
           ctx.scale(pulseScale, pulseScale);
 
-          // Aura rosa pulsante
-          ctx.fillStyle = 'rgba(244, 63, 94, 0.35)';
+          // Glow luminoso vermelho no asfalto escuro
+          ctx.shadowColor = '#ef4444';
+          ctx.shadowBlur = 16;
+
+          // Halo externo translúcido pulsante
+          ctx.fillStyle = 'rgba(239, 68, 68, 0.40)';
           ctx.beginPath();
-          ctx.arc(0, 0, 16, 0, Math.PI * 2);
+          ctx.arc(0, 0, 20, 0, Math.PI * 2);
           ctx.fill();
 
-          ctx.fillStyle = 'rgba(251, 113, 133, 0.7)';
+          // Desenho do Coração Vermelho 3D esculpido com gradiente radial
+          const heartGrad = ctx.createRadialGradient(-3, -4, 2, 0, 2, 16);
+          heartGrad.addColorStop(0, '#ff4d4d');
+          heartGrad.addColorStop(0.5, '#ef4444');
+          heartGrad.addColorStop(1, '#991b1b');
+
           ctx.beginPath();
-          ctx.arc(0, 0, 11, 0, Math.PI * 2);
+          ctx.moveTo(0, -5);
+          // Curva superior esquerda
+          ctx.bezierCurveTo(-5, -15, -18, -12, -18, 0);
+          // Lado esquerdo até a ponta inferior
+          ctx.bezierCurveTo(-18, 10, -6, 16, 0, 21);
+          // Lado direito da ponta inferior
+          ctx.bezierCurveTo(6, 16, 18, 10, 18, 0);
+          // Curva superior direita
+          ctx.bezierCurveTo(18, -12, 5, -15, 0, -5);
+          ctx.closePath();
+
+          ctx.fillStyle = heartGrad;
           ctx.fill();
 
-          ctx.font = '16px sans-serif';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText("💋", 0, 1);
+          // Borda branca brilhante que destaca perfeitamente no asfalto escuro
+          ctx.lineWidth = 1.6;
+          ctx.strokeStyle = '#ffffff';
+          ctx.stroke();
+
+          // Reflexo de luz especular brilhante
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+          ctx.beginPath();
+          ctx.arc(-6, -6, 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.shadowBlur = 0;
         } else if (item.type === 'nitro') {
           // Raio / Turbo de Nitro
           ctx.fillStyle = 'rgba(245, 158, 11, 0.3)';
@@ -2626,7 +2674,7 @@
       gameState = STATE.GAMEOVER;
       stopEngineSound(); // Desliga o barulho do carro imediatamente ao bater!
       cancelSpeech();    // Corta qualquer narração atrasada
-      setBgmVolume(0.38); // Continua a musiquinha gostosa no Game Over!
+      setBgmVolume(0.42); // Continua a musiquinha gostosa no Game Over (+10%)!
       playSound('crash');
       cameraShake = 20;
       flashColor = '#ffffff';
@@ -2654,7 +2702,7 @@
       gameState = STATE.PODIUM;
       stopEngineSound(); // Desliga o barulho do motor no pódio!
       cancelSpeech();
-      setBgmVolume(0.42); // Música triunfal comemorativa no pódio!
+      setBgmVolume(0.46); // Música triunfal comemorativa no pódio (+10%)!
       playSound('vigarista_beat');
       cameraShake = 12;
       flashColor = '#facc15';
@@ -2876,7 +2924,7 @@
 
             r.kissTimer = (r.kissTimer || 80) - 1;
             if (r.kissTimer <= 0 && r.y > -40 && r.y < V_H - 100) {
-              r.kissTimer = 95 + Math.random() * 55; // Solta beijinho frequentemente
+              r.kissTimer = 95 + Math.random() * 55; // Solta coração frequentemente
               trackItems.push({
                 x: r.x + (Math.random() * 16 - 8),
                 y: r.y + 40,
@@ -2884,7 +2932,7 @@
                 size: 26,
                 rotation: 0
               });
-              addFloatingText("💋 Beijinho da Kássia!", r.x, r.y - 25, '#fb7185');
+              addFloatingText("❤️ Coração da Kássia!", r.x, r.y - 25, '#ef4444');
             }
           }
 
@@ -2989,7 +3037,7 @@
           const itemBox = { x: item.x - item.size / 2, y: item.y - item.size / 2, width: item.size, height: item.size };
           if (checkAABB(pHitbox, itemBox)) {
             if (item.type === 'kiss') {
-              // BEIJINHO DA PENÉLOPE CHARMOSA (SUPER TURBO + ESCUDO DO AMOR!)
+              // CORAÇÃO DA KÁSSIA CHARMOSA (SUPER TURBO + ESCUDO DO AMOR!)
               kissesCollected++;
               score += 800;
               player.kissPowerTimer = 420; // ~7 segundos a 60fps de Super Turbo e Imunidade!
@@ -2997,9 +3045,9 @@
               comboMultiplier = Math.min(5, comboMultiplier + 1);
               comboTimer = 240;
               playSound('kiss');
-              addFloatingText("SUPER BEIJO TURBO! 💋 +800", player.x, player.y - 40, '#f43f5e');
+              addFloatingText("SUPER CORAÇÃO TURBO! ❤️ +800", player.x, player.y - 40, '#ef4444');
               cameraShake = 5;
-              flashColor = '#fda4af';
+              flashColor = '#fca5a5';
               flashAlpha = 0.35;
               for (let k = 0; k < 8; k++) {
                 particles.push({
@@ -3008,7 +3056,7 @@
                   vx: (Math.random() * 3 - 1.5),
                   vy: -2 - Math.random() * 3,
                   size: 5 + Math.random() * 4,
-                  color: '#fb7185',
+                  color: '#ef4444',
                   alpha: 0.9,
                   decay: 0.04
                 });
@@ -3023,20 +3071,20 @@
               playSound('pickup');
             } else if (item.type === 'oil') {
               if (player.kissPowerTimer > 0) {
-                // Imune ao óleo sob o efeito do beijo da Kássia!
-                addFloatingText("ESCUDO DO AMOR! 💖 IMUNE AO ÓLEO!", player.x, player.y - 40, '#fb7185');
+                // Imune ao óleo sob o efeito do coração da Kássia!
+                addFloatingText("ESCUDO DO CORAÇÃO! ❤️ IMUNE AO ÓLEO!", player.x, player.y - 40, '#ef4444');
                 playSound('pickup');
-                for (let k = 0; k < 4; k++) spawnSmoke(player.x, player.y, '#f43f5e');
+                for (let k = 0; k < 4; k++) spawnSmoke(player.x, player.y, '#ef4444');
               } else {
-                // Poça de óleo do Dick Vigarista: o kart desliza e derrapa se não desviar!
-                player.slipTimer = 35; // Duração do deslize físico lateral
+                // Poça de óleo do Dick Vigarista: deslize reduzido em 30% para não jogar na parede!
+                player.slipTimer = 24; // Duração reduzida em 30% (era 35)
                 player.slipDirection = (Math.random() < 0.5 ? -1 : 1);
-                player.driftAngle = player.slipDirection * 0.55;
-                player.speed = Math.max(player.minSpeed, player.speed - 30);
-                addFloatingText("DERRAPOU NO ÓLEO! ⚠️ DESVIE!", player.x, player.y - 40, '#f87171');
+                player.driftAngle = player.slipDirection * 0.38; // Reduzido em 30% (era 0.55)
+                player.speed = Math.max(player.minSpeed, player.speed - 20); // Perda suave (era -30)
+                addFloatingText("DERRAPOU NO ÓLEO! ⚠️ CORRIJA O VOLANTE!", player.x, player.y - 40, '#f87171');
                 playSound('slip');
-                cameraShake = 7;
-                for (let k = 0; k < 6; k++) spawnSmoke(player.x, player.y + 25, '#0f172a');
+                cameraShake = 5;
+                for (let k = 0; k < 5; k++) spawnSmoke(player.x, player.y + 25, '#0f172a');
               }
             }
             trackItems.splice(i, 1);
@@ -3331,7 +3379,7 @@
 
       isGridCountdown = true; // CONGELA física e colisões!
       gridRevBoost = 0;
-      setBgmVolume(0.25); // BGM presente e animada no grid!
+      setBgmVolume(0.28); // BGM presente e animada no grid (+10%)!
 
       rivals = [];
       trackItems = [];
@@ -3436,7 +3484,7 @@
 
         isGridCountdown = false; // DESCONGELA a corrida! Física ativa!
         gridRevBoost = 0;
-        setBgmVolume(0.38); // BGM empolgante, animada e com volume nítido!
+        setBgmVolume(0.42); // BGM empolgante, animada e com volume nítido (+10%)!
         player.speed = player.baseSpeed; // Arrancada em 100 KM/H!
         raceStartTime = Date.now();
         currentLapStartTime = Date.now();
