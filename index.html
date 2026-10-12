@@ -1723,14 +1723,14 @@
       baseSpeed: 100,
       minSpeed: 60,
       maxNormalSpeed: 175,
-      maxNitroSpeed: 235,
+      maxNitroSpeed: 200,
 
       nitro: 100,
       maxNitro: 100,
       isNitro: false,
       isBraking: false,
       kissPowerTimer: 0,
-      maxKissTurboSpeed: 265,
+      maxKissTurboSpeed: 212, // Reduzido em 20% (de 265 para 212 km/h) a pedido de Sales
 
       steerLeft: false,
       steerRight: false,
@@ -1763,15 +1763,15 @@
 
           // Mecânica suave: Desacelera antes do poder acabar para evitar batidas bruscas!
           if (this.kissPowerTimer > 90) {
-            // Fase de Ultra Velocidade Máxima (~265 km/h)
-            this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 3.0);
-            cameraShake = Math.max(cameraShake, 3.2);
+            // Fase de Super Velocidade (-20%: ~212 km/h com controle impecável)
+            this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 2.4);
+            cameraShake = Math.max(cameraShake, 2.4);
           } else {
             // Últimos 1.5s: Desacelera suavemente em direção à velocidade segura antes do término do poder
             if (this.speed > targetSafeSpeed) {
-              this.speed = Math.max(targetSafeSpeed, this.speed - 1.6);
+              this.speed = Math.max(targetSafeSpeed, this.speed - 1.4);
             }
-            cameraShake = Math.max(cameraShake, 1.2);
+            cameraShake = Math.max(cameraShake, 1.0);
           }
 
           // Chamas vermelhas e douradas de super turbo
