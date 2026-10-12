@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Kart São Luís 🏁 Turbo GP dos Amigos</title>
+  <title>Kart São Luís 🏁 Turbo GP com Sales & Kássia</title>
   <meta name="theme-color" content="#070a14">
+  <meta name="description" content="Jogo oficial de corrida de kart em São Luís! Acelere com Sales, Kássia e os amigos no Kartódromo João Salem, com Kawan o fotógrafo e Mari na confirmação do grid!">
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kart São Luís 🏁 Turbo GP dos Amigos">
+  <meta property="og:description" content="Acelere a mais de 250 km/h com os amigos no Kartódromo João Salem! Jogue grátis direto no celular.">
+  <meta property="og:image" content="https://nativo360ads.github.io/kart-sao-luis/capa_sales_kassia_kart.jpg">
+  <meta property="og:url" content="https://nativo360ads.github.io/kart-sao-luis/">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kart São Luís 🏁 Turbo GP dos Amigos">
+  <meta name="twitter:description" content="Acelere a mais de 250 km/h com os amigos no Kartódromo João Salem! Jogue grátis direto no celular.">
+  <meta name="twitter:image" content="https://nativo360ads.github.io/kart-sao-luis/capa_sales_kassia_kart.jpg">
   <style>
     * {
       box-sizing: border-box;
@@ -130,6 +142,7 @@
     /* Ações do Topo */
     .hud-actions {
       display: flex;
+      align-items: center;
       gap: 6px;
       pointer-events: auto;
     }
@@ -152,6 +165,31 @@
     .btn-action-top:active {
       transform: scale(0.92);
       background: rgba(255, 255, 255, 0.2);
+    }
+
+    .nativo-credit-hud {
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(250, 204, 21, 0.55);
+      border-radius: 8px;
+      padding: 3px 6px;
+      font-size: 7.5px;
+      font-weight: 800;
+      color: #cbd5e1;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      text-align: right;
+      line-height: 1.15;
+    }
+
+    .nativo-credit-hud strong {
+      color: #facc15;
+      font-weight: 900;
+      display: block;
+      font-size: 8px;
     }
 
     /* ==========================================================================
@@ -439,7 +477,376 @@
       border-color: #f59e0b;
       box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
     }
+  
+    /* ESTILOS VIP: SALES & KÁSSIA, MARI E KAWAN FOTÓGRAFO */
+    .welcome-modal-card {
+      background: linear-gradient(145deg, #0f172a 0%, #030712 100%);
+      border: 2.5px solid #facc15;
+      border-radius: 20px;
+      padding: 16px;
+      max-width: 360px;
+      width: 95%;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 35px rgba(250, 204, 21, 0.35);
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .poster-box {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(250, 204, 21, 0.5);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 15px rgba(245, 158, 11, 0.3);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .poster-box img {
+      width: 100%;
+      height: auto;
+      max-height: 48vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mari-card {
+      background: linear-gradient(145deg, #0c4a6e 0%, #082f49 100%);
+      border: 2px solid #38bdf8;
+      border-radius: 18px;
+      padding: 16px;
+      max-width: 340px;
+      width: 95%;
+      text-align: left;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.35);
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .mari-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      padding-bottom: 10px;
+    }
+
+    .mari-avatar-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 2px solid #bae6fd;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+
+    .mari-speech-bubble {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+    }
+
+    /* GRID START OVERLAY & KAWAN FOTÓGRAFO */
+    #grid-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.78);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    #camera-flash {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.08s ease-out;
+    }
+
+    .kawan-card {
+      background: rgba(15, 23, 42, 0.95);
+      border: 2px solid #facc15;
+      border-radius: 16px;
+      padding: 12px 18px;
+      max-width: 320px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 25px rgba(250, 204, 21, 0.4);
+      margin-bottom: 20px;
+      animation: pulseBanner 1s infinite alternate;
+    }
+
+    .traffic-lights-box {
+      display: flex;
+      gap: 16px;
+      background: #000000;
+      padding: 12px 24px;
+      border-radius: 40px;
+      border: 3px solid #374151;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
+      margin-bottom: 16px;
+    }
+
+    .traffic-light {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #1f2937;
+      border: 2px solid #111827;
+      transition: all 0.15s ease;
+    }
+
+    .traffic-light.active-red {
+      background: #ef4444;
+      box-shadow: 0 0 25px #ef4444, 0 0 45px #dc2626;
+      border-color: #fee2e2;
+    }
+
+    .traffic-light.active-green {
+      background: #22c55e;
+      box-shadow: 0 0 30px #22c55e, 0 0 55px #16a34a;
+      border-color: #dcfce7;
+    }
+
+    .grid-status-text {
+      font-size: 16px;
+      font-weight: 900;
+      color: #facc15;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    }
+  
+    /* ==========================================================================
+       PADRÃO OFICIAL QUIZ DA ELEIÇÃO & REGRA UNIVERSAL APP SALES
+       ========================================================================== */
+    :root {
+      --gold-primary: #facc15;
+      --gold-gradient: linear-gradient(135deg, #facc15 0%, #f59e0b 50%, #d97706 100%);
+      --kart-red: #ef4444;
+      --leo-cyan: #00e5ff;
+    }
+
+    .lobby-overlay, .mari-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 100;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 14px 12px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .lobby-card, .mari-box-card {
+      background: linear-gradient(145deg, #09132e 0%, #040817 100%);
+      border: 2.5px solid var(--gold-primary);
+      border-radius: 20px;
+      max-width: 440px;
+      width: 100%;
+      margin: auto 0;
+      padding: 16px 14px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(250, 204, 21, 0.35);
+      text-align: center;
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .poster-container {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2.5px solid var(--gold-primary);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 158, 11, 0.4);
+      background: #010a08;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .poster-img {
+      width: 100%;
+      height: auto;
+      max-height: 44vh;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .lobby-audio-bar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1.5px solid rgba(250, 204, 21, 0.45);
+      border-radius: 20px;
+      padding: 7px 16px;
+      margin: 0 auto 12px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #facc15;
+      cursor: pointer;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.25);
+      transition: all 0.2s;
+    }
+    .lobby-audio-bar:active {
+      transform: scale(0.96);
+    }
+    .lobby-invitation {
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      margin-bottom: 12px;
+      line-height: 1.42;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(250, 204, 21, 0.25);
+    }
+
+    .input-group {
+      text-align: left;
+      margin-bottom: 12px;
+    }
+
+    .input-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .input-name {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid rgba(250, 204, 21, 0.5);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: #ffffff;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .input-name:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.6);
+    }
+
+    .btn-start-epic {
+      width: 100%;
+      background: var(--gold-gradient);
+      color: #060b19;
+      border: none;
+      border-radius: 14px;
+      padding: 13px 10px;
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(250, 204, 21, 0.5);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 50px;
+    }
+
+    .btn-start-epic:active {
+      transform: scale(0.97);
+    }
+
+    /* CARD COMERCIAL OBRIGATÓRIO DO LÉO IA NO WHATSAPP */
+    .leo-promo-card {
+      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(0, 230, 118, 0.08));
+      border: 1.5px solid var(--leo-cyan);
+      border-radius: 14px;
+      padding: 12px 14px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2);
+    }
+
+    .leo-promo-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .leo-promo-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .leo-promo-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f0f4f8;
+      line-height: 1.3;
+    }
+
+    .leo-promo-title strong {
+      color: var(--leo-cyan);
+    }
+
+    .btn-leo-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #00e5ff 0%, #00b0ff 100%);
+      color: #0b0f19;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 229, 255, 0.35);
+    }
+
+    .btn-leo-cta:active {
+      transform: scale(0.97);
+    }
+
   </style>
+
 </head>
 <body>
   <div id="game-container">
@@ -468,13 +875,16 @@
 
       <div class="hud-actions">
         <button id="btn-pilot-config" class="btn-action-top" title="Trocar Piloto">🏎️</button>
-        <button id="btn-sound-toggle" class="btn-action-top" title="Som Suave">🔊</button>
+        <div class="nativo-credit-hud" title="Desenvolvido por Nativo 360º/W Sales">
+          <span>Desenvolvido por</span>
+          <strong>Nativo 360º/W Sales</strong>
+        </div>
       </div>
     </div>
 
     <!-- Indicador do Super Beijo da Penélope (quando ativo) -->
     <div id="kiss-power-hud" style="display: none; position: absolute; top: 68px; left: 0; right: 0; margin: 0 auto; width: 220px; background: rgba(244, 63, 94, 0.9); border: 2px solid #fff; border-radius: 20px; padding: 4px 10px; text-align: center; font-size: 11px; font-weight: 900; color: #fff; z-index: 40; box-shadow: 0 0 15px rgba(244, 63, 94, 0.7); animation: pulseBanner 1s infinite alternate;">
-      💋 SUPER TURBO DO AMOR ATIVO! ⚡
+      💋 SUPER TURBO DO AMOR DA KÁSSIA! 💖⚡
     </div>
 
     <!-- Canvas do Jogo -->
@@ -510,35 +920,119 @@
       </div>
     </div>
 
-    <!-- Modal de Escolha do Piloto (LOBBY INICIAL DOS AMIGOS) -->
-    <div id="pilot-modal" class="modal-overlay" style="display: flex;">
-      <h1 class="title-banner" style="font-size: 26px;">KART SÃO LUÍS 🏁</h1>
-      <p class="subtitle-banner" style="margin-bottom: 8px;">GRANDE PRÊMIO DO KARTÓDROMO JOÃO SALEM • SÃO LUÍS - MA</p>
+    
+  <!-- ==========================================================================
+       LOBBY INICIAL OFICIAL: MODELO QUIZ DA ELEIÇÃO COM O FLYER DE KART SÃO LUÍS
+       ========================================================================== -->
+  <div id="lobby-screen" class="lobby-overlay" style="display: flex;">
+    <div class="lobby-card">
+      <!-- PÔSTER OFICIAL DE KART SÃO LUÍS -->
+      <div class="poster-container">
+        <img src="capa_sales_kassia_kart.jpg" alt="Kart São Luís - Venha Jogar Nosso Kart" class="poster-img">
+      </div>
 
-      <!-- Preview do Kart Selecionado -->
-      <div id="pilot-preview-container">
-        <canvas id="pilot-preview-canvas" width="60" height="85"></canvas>
-        <div class="pilot-preview-info">
-          <span style="font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Piloto Selecionado:</span>
-          <span id="preview-pilot-name" style="font-size: 14px; font-weight: 900; color: #facc15;">⚡ #1 Sales</span>
-          <span id="preview-pilot-kart" style="font-size: 10px; color: #38bdf8; font-weight: 700;">Motor 4T Honda 390cc • Chassi Pró</span>
+      <!-- BADGE DE CONTROLE DE ÁUDIO NO LOBBY -->
+      <div id="lobby-audio-bar" class="lobby-audio-bar" title="Ativar ou Silenciar Som">
+        <span id="lobby-audio-icon">🔊</span>
+        <span id="lobby-audio-text">ÁUDIO DO KART ATIVADO • TOQUE PARA OUVIR</span>
+      </div>
+
+      <p class="lobby-invitation">
+        "Acelere a mais de <strong>250 km/h</strong> no Kartódromo João Salem! Venha disputar a liderança contra os melhores pilotos da Ilha do Amor. Valendo o título do Grande Prêmio!"
+      </p>
+
+      <div class="input-group">
+        <label class="input-label" for="txtPlayerName">Como o Kart deve te chamar no jogo:</label>
+        <input type="text" id="txtPlayerName" class="input-name" placeholder="Digite seu nome..." value="Sales" maxlength="20">
+      </div>
+
+      <button class="btn-start-epic" id="btnGoToMari">
+        ACEITAR DESAFIO & IR PARA O GRID 🚦
+      </button>
+
+      <!-- CARD COMERCIAL DE ALTA CONVERSÃO DO LÉO IA NO WHATSAPP (MANDAMENTO APP SALES) -->
+      <div class="leo-promo-card">
+        <div class="leo-promo-header">
+          <div class="leo-promo-icon">🤖</div>
+          <div class="leo-promo-title">
+            Quer um jogo interativo para sua <strong>empresa, evento ou campanha</strong>?
+          </div>
+        </div>
+        <a href="https://wa.me/5598970091643?text=Ol%C3%A1%20L%C3%A9o!%20Joguei%20o%20Kart%20S%C3%A3o%20Lu%C3%ADs%20e%20gostaria%20de%20criar%20um%20jogo%20personalizado%20para%20o%20meu%20evento%20ou%20empresa!" target="_blank" class="btn-leo-cta">
+          <span>Falar com o LÉO no WhatsApp</span>
+          <span>💬</span>
+        </a>
+      </div>
+
+      <div style="margin-top: 10px; font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+        Desenvolvido por <strong style="color: #facc15;">Nativo 360º / W Sales</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELA 2: CONFIRMAÇÃO OFICIAL DA MARI -->
+  <div id="mari-screen" class="mari-overlay" style="display: none;">
+    <div class="mari-box-card">
+      <div class="mari-header">
+        <div class="mari-avatar-circle">📋</div>
+        <div>
+          <h2 style="font-size: 15px; font-weight: 900; color: #38bdf8; text-transform: uppercase; margin: 0;">Mari • Coordenação</h2>
+          <span style="font-size: 10px; color: #94a3b8; font-weight: 700;">Briefing Oficial do Kartódromo João Salem</span>
         </div>
       </div>
 
-      <div style="width: 100%; max-width: 320px; text-align: left; margin-bottom: 3px;">
-        <label for="custom-pilot-name" style="font-size: 10px; color: #fbbf24; font-weight: 800; text-transform: uppercase;">Digite ou altere seu nome:</label>
+      <div class="mari-speech-bubble" style="text-align: left;">
+        <p style="margin-bottom: 8px;">
+          "Olá, piloto <strong id="mari-pilot-display" style="color: #facc15;">Sales</strong>! Sua vaga na <strong>Bateria das 20h30</strong> no Kartódromo João Salem está <strong>CONFIRMADA</strong>! ✅"
+        </p>
+        <p style="margin-bottom: 8px; font-size: 11px; color: #bae6fd;">
+          🏎️ <strong>Kart:</strong> <span id="mari-kart-display">#19 Honda 390cc</span> • Pneus novos calibrados, tanque cheio e macacão liberado.
+        </p>
+        <p style="font-size: 11px; color: #facc15; margin: 0;">
+          📸 Vá para a reta de largada: <strong>Kawan</strong> já está no meio do grid tirando a foto oficial de todos os pilotos!"
+        </p>
       </div>
-      <input type="text" id="custom-pilot-name" class="pilot-custom-input" placeholder="Digite seu nome (ex: Sales)" maxlength="15" value="Sales">
 
-      <div style="width: 100%; max-width: 320px; text-align: left; margin-bottom: 3px;">
-        <span style="font-size: 10px; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Ou escolha rápido quem você é na turma:</span>
-      </div>
-      <div id="pilot-select-list"></div>
-
-      <button id="btn-confirm-pilot" class="btn-action-main">
-        <span>🏁</span> LARGADA! ENTRAR NA PISTA
+      <button id="btn-to-grid" class="btn-start-epic">
+        📸 ALINHAR NO GRID COM KAWAN
       </button>
+
+      <!-- Card do LÉO também de suporte -->
+      <div class="leo-promo-card" style="margin-top: 10px; padding: 10px 12px;">
+        <div class="leo-promo-header">
+          <div class="leo-promo-icon" style="font-size: 1.2rem;">🤖</div>
+          <div class="leo-promo-title" style="font-size: 0.78rem;">
+            Dúvidas ou quer um jogo para sua empresa? <strong>Fale com LÉO IA</strong>
+          </div>
+        </div>
+        <a href="https://wa.me/5598970091643?text=Ol%C3%A1%20L%C3%A9o!%20Estou%20no%20Kart%20S%C3%A3o%20Lu%C3%ADs!" target="_blank" class="btn-leo-cta" style="padding: 8px 12px; font-size: 0.8rem;">
+          <span>WhatsApp do LÉO</span>
+          <span>⚡</span>
+        </a>
+      </div>
     </div>
+  </div>
+
+    <!-- 4. OVERLAY DO GRID COM KAWAN FOTÓGRAFO E SEMÁFORO DE LARGADA -->
+    <div id="grid-overlay">
+      <div id="kawan-photo-card" class="kawan-card">
+        <span style="font-size: 26px;">📸</span>
+        <div style="text-align: left;">
+          <div style="font-size: 12px; font-weight: 900; color: #facc15;">KAWAN • FOTÓGRAFO OFICIAL</div>
+          <div id="kawan-message" style="font-size: 11px; color: #ffffff;">Passando no grid... Olhem para a foto, pilotos!</div>
+        </div>
+      </div>
+
+      <div class="traffic-lights-box">
+        <div id="t-light-1" class="traffic-light"></div>
+        <div id="t-light-2" class="traffic-light"></div>
+        <div id="t-light-3" class="traffic-light"></div>
+      </div>
+
+      <div id="grid-status-label" class="grid-status-text">ALINHANDO NA RETA PRINCIPAL...</div>
+    </div>
+
+    <div id="camera-flash"></div>
 
     <!-- Modal de Fim da Bateria (Game Over por batida) -->
     <div id="gameover-modal" class="modal-overlay">
@@ -618,7 +1112,7 @@
           <span id="podium-overtakes">12</span>
         </div>
         <div class="stat-row">
-          <span>Beijos da Penélope 💋:</span>
+          <span>Beijos da Kássia 💖:</span>
           <span id="podium-kisses">2</span>
         </div>
         <div class="stat-row">
@@ -661,23 +1155,35 @@
     };
 
     let gameState = STATE.WAITING;
-    let soundEnabled = localStorage.getItem('kart_sl_sound') !== 'false';
+    let isGridCountdown = false;
+    let gridRevBoost = 0;
+    let soundEnabled = true; localStorage.setItem('kart_sl_sound', 'true');
 
-    // Lista oficial dos 13 amigos do grupo Kart São Luís
+    // Lista oficial dos pilotos do grupo Kart São Luís (todos os karts amarelos!)
     const FRIENDS_LIST = [
-      { id: 'sales', name: 'Sales', number: 1, color: '#f59e0b', secondary: '#ef4444', helmet: '#2563eb', visor: '#fde047', badge: '⚡ #1 Sales' },
-      { id: 'douglas', name: 'Douglas', number: 7, color: '#06b6d4', secondary: '#0f172a', helmet: '#0891b2', visor: '#cffafe', badge: '#7 Douglas' },
-      { id: 'jadson', name: 'Jadson', number: 9, color: '#10b981', secondary: '#065f46', helmet: '#059669', visor: '#a7f3d0', badge: '#9 Jadson' },
-      { id: 'verinha', name: 'Verinha', number: 10, color: '#ec4899', secondary: '#831843', helmet: '#db2777', visor: '#fbcfe8', badge: '👑 #10 Verinha' },
-      { id: 'andre', name: 'André', number: 11, color: '#f97316', secondary: '#7c2d12', helmet: '#ea580c', visor: '#fed7aa', badge: '#11 André' },
-      { id: 'cassio', name: 'Cássio', number: 12, color: '#dc2626', secondary: '#450a0a', helmet: '#b91c1c', visor: '#fecaca', badge: '#12 Cássio' },
-      { id: 'diogo', name: 'Diogo', number: 14, color: '#2563eb', secondary: '#facc15', helmet: '#1d4ed8', visor: '#bfdbfe', badge: '#14 Diogo' },
-      { id: 'vanderson', name: 'Vanderson', number: 20, color: '#475569', secondary: '#84cc16', helmet: '#334155', visor: '#bef264', badge: '#20 Vanderson' },
-      { id: 'riquelme', name: 'Riquelme', number: 77, color: '#eab308', secondary: '#18181b', helmet: '#ca8a04', visor: '#fef9c3', badge: '⚡ #77 Riquelme' },
-      { id: 'fabiano', name: 'Fabiano', number: 88, color: '#f8fafc', secondary: '#0284c7', helmet: '#e2e8f0', visor: '#bae6fd', badge: '#88 Fabiano' },
-      { id: 'gustavo', name: 'Gustavo', number: 90, color: '#14b8a6', secondary: '#ea580c', helmet: '#0d9488', visor: '#ccfbf1', badge: '#90 Gustavo' },
-      { id: 'clara', name: 'Clara', number: 95, color: '#a855f7', secondary: '#f43f5e', helmet: '#9333ea', visor: '#f3e8ff', badge: '💖 #95 Clara' },
-      { id: 'mateus', name: 'Mateus', number: 99, color: '#b91c1c', secondary: '#eab308', helmet: '#991b1b', visor: '#fed7aa', badge: '#99 Mateus' }
+      { id: 'sales', name: 'Sales', number: 19, color: '#facc15', secondary: '#ef4444', helmet: '#2563eb', visor: '#fde047', badge: '⚡ #19 Sales' },
+      { id: 'jadson', name: 'Jadson', number: 22, color: '#facc15', secondary: '#065f46', helmet: '#059669', visor: '#a7f3d0', badge: '#22 Jadson' },
+      { id: 'douglas', name: 'Douglas', number: 12, color: '#facc15', secondary: '#0f172a', helmet: '#0891b2', visor: '#cffafe', badge: '#12 Douglas' },
+      { id: 'diogo', name: 'Diogo', number: 8, color: '#facc15', secondary: '#1e3a8a', helmet: '#1d4ed8', visor: '#bfdbfe', badge: '#8 Diogo' },
+      { id: 'thiago', name: 'Thiago', number: 7, color: '#facc15', secondary: '#0369a1', helmet: '#0284c7', visor: '#e0f2fe', badge: '#7 Thiago' },
+      { id: 'taker', name: 'Taker', number: 18, color: '#facc15', secondary: '#374151', helmet: '#1f2937', visor: '#f3f4f6', badge: '#18 Taker' },
+      { id: 'flauberth', name: 'Flauberth', number: 26, color: '#facc15', secondary: '#854d0e', helmet: '#a16207', visor: '#fef08a', badge: '#26 Flauberth' },
+      { id: 'verinha', name: 'Verinha', number: 13, color: '#facc15', secondary: '#831843', helmet: '#db2777', visor: '#fbcfe8', badge: '👑 #13 Verinha' },
+      { id: 'vanderson', name: 'Vanderson', number: 17, color: '#facc15', secondary: '#334155', helmet: '#475569', visor: '#bef264', badge: '#17 Vanderson' },
+      { id: 'diego', name: 'Diego', number: 10, color: '#facc15', secondary: '#431407', helmet: '#c2410c', visor: '#ffedd5', badge: '#10 Diego' },
+      { id: 'mikaelly', name: 'Mikaelly', number: 21, color: '#facc15', secondary: '#701a75', helmet: '#c026d3', visor: '#fae8ff', badge: '💖 #21 Mikaelly' },
+      { id: 'wedson', name: 'Wedson', number: 16, color: '#facc15', secondary: '#14532d', helmet: '#16a34a', visor: '#dcfce7', badge: '#16 Wedson' },
+      { id: 'adryan', name: 'Adryan', number: 24, color: '#facc15', secondary: '#1e1b4b', helmet: '#4338ca', visor: '#e0e7ff', badge: '#24 Adryan' },
+      { id: 'jmessias', name: 'J. Messias', number: 4, color: '#facc15', secondary: '#1c1917', helmet: '#57534e', visor: '#f5f5f4', badge: '#4 J. Messias' },
+      { id: 'cassio', name: 'Cássio', number: 15, color: '#facc15', secondary: '#450a0a', helmet: '#b91c1c', visor: '#fecaca', badge: '#15 Cássio' },
+      { id: 'italo', name: 'Italo', number: 28, color: '#facc15', secondary: '#064e3b', helmet: '#047857', visor: '#d1fae5', badge: '#28 Italo' },
+      { id: 'andre', name: 'André', number: 14, color: '#facc15', secondary: '#7c2d12', helmet: '#ea580c', visor: '#fed7aa', badge: '#14 André' },
+      { id: 'thiagooo', name: 'Thiagooo', number: 19, color: '#facc15', secondary: '#0c4a6e', helmet: '#0369a1', visor: '#bae6fd', badge: '#19 Thiagooo' },
+      { id: 'riquelme', name: 'Riquelme', number: 77, color: '#facc15', secondary: '#18181b', helmet: '#ca8a04', visor: '#fef9c3', badge: '⚡ #77 Riquelme' },
+      { id: 'fabiano', name: 'Fabiano', number: 88, color: '#facc15', secondary: '#0284c7', helmet: '#e2e8f0', visor: '#bae6fd', badge: '#88 Fabiano' },
+      { id: 'gustavo', name: 'Gustavo', number: 90, color: '#facc15', secondary: '#ea580c', helmet: '#0d9488', visor: '#ccfbf1', badge: '#90 Gustavo' },
+      { id: 'clara', name: 'Clara', number: 95, color: '#facc15', secondary: '#f43f5e', helmet: '#9333ea', visor: '#f3e8ff', badge: '👑 #95 Clara' },
+      { id: 'mateus', name: 'Mateus', number: 99, color: '#facc15', secondary: '#991b1b', helmet: '#b91c1c', visor: '#fed7aa', badge: '#99 Mateus' }
     ];
 
     // Piloto Ativo do Jogador
@@ -697,43 +1203,44 @@
         grassColor: '#065f46',
         ambientOverlay: null,
         rivalSpeedMult: 1.0,
-        lapDistance: 64000, // 60 segundos cravados por volta!
-        maxRivalsOnScreen: 3, // Fase 1: 3 carros na pista
-        safeSpawnDistance: 270,
-        spawnIntervalBase: 150
+        lapDistance: 64000,
+        maxRivalsOnScreen: 4, // Aumentado em 15% a presença na pista
+        safeSpawnDistance: 220,
+        spawnIntervalBase: 125 // Reduzido em 15% o intervalo para gerar mais karts amarelos
       },
       {
         id: 2,
         name: "GP LITORÂNEA",
-        subtitle: "Avenida Litorânea (Pôr do Sol)",
-        roadColor: '#27272a',
-        curbColor1: '#ea580c',
-        curbColor2: '#fef08a',
-        grassColor: '#92400e', // Praia / Areia dourada
-        ambientOverlay: 'rgba(251, 146, 60, 0.12)', // Pôr do sol alaranjado
-        rivalSpeedMult: 1.05,
-        lapDistance: 64000, // 60 segundos cravados por volta!
-        maxRivalsOnScreen: 4, // Fase 2: mais carros na pista! (4 karts simultâneos)
-        safeSpawnDistance: 210,
-        spawnIntervalBase: 115
+        subtitle: "Orla de São Luís",
+        roadColor: '#1e293b',
+        curbColor1: '#0284c7',
+        curbColor2: '#f8fafc',
+        grassColor: '#ca8a04',
+        ambientOverlay: 'rgba(251, 146, 60, 0.08)',
+        rivalSpeedMult: 1.08,
+        lapDistance: 64000,
+        maxRivalsOnScreen: 5, // Aumentado em 15%
+        safeSpawnDistance: 200,
+        spawnIntervalBase: 110
       },
       {
         id: 3,
-        name: "GP NOTURNO",
-        subtitle: "São Luís Turbo Night GP",
-        roadColor: '#090d16',
-        curbColor1: '#06b6d4', // Ciano neon
-        curbColor2: '#ec4899', // Rosa neon
-        grassColor: '#022c22', // Noite escura
-        ambientOverlay: 'rgba(15, 23, 42, 0.28)', // Clima noturno
-        rivalSpeedMult: 1.10,
-        lapDistance: 64000, // 60 segundos cravados por volta!
-        maxRivalsOnScreen: 5, // Fase 3: pelotão cheio! (5 karts simultâneos disputando a pista)
-        safeSpawnDistance: 170,
-        spawnIntervalBase: 85
+        name: "GP SÃO LUÍS NOTURNO",
+        subtitle: "Super Final Sob os Refletores",
+        roadColor: '#0f172a',
+        curbColor1: '#eab308',
+        curbColor2: '#ef4444',
+        grassColor: '#022c22',
+        ambientOverlay: 'rgba(2, 6, 23, 0.32)',
+        rivalSpeedMult: 1.15,
+        lapDistance: 64000,
+        maxRivalsOnScreen: 6, // Aumentado em 15%
+        safeSpawnDistance: 180,
+        spawnIntervalBase: 95
       }
     ];
 
+    // Gerenciamento de Estágios & Voltas
     let currentStageIndex = 0;
     let currentLap = 1;
     const TOTAL_LAPS = 3;
@@ -754,7 +1261,7 @@
     let comboTimer = 0;
     let topSpeedReached = 80;
 
-    // Efeitos Visuais
+    // Efeitos Visuais & Partículas
     let cameraShake = 0;
     let flashColor = null;
     let flashAlpha = 0;
@@ -772,10 +1279,13 @@
     let floatingTexts = [];
 
     /* ==========================================================================
-       ÁUDIO DE KART ENCORPADO, REALISTA E 100% CONFORTÁVEL (WEB AUDIO API)
-       - Onda triangular suave (triangle) + sub-grave (sine) = ronco de motor 4T de kart
-       - Low-Pass Filter (380Hz) = corta agudos ásperos, zero dor de cabeça
-       - Volume encorpado e perceptível (0.055) com subida de giro na aceleração
+       SISTEMA DE ÁUDIO POTENTE & MÚSICA ARCADE (WEB AUDIO API)
+       - Motor Honda GX390 390cc: Onda Sawtooth + Triangle com filtro ressonante dinâmico
+       - Áudio audível e nítido em alto-falantes de celular, tablets e PC
+       - Trilha Sonora Arcade Synthwave rodando desde a tela inicial do Lobby
+       - Câmera do Kawan: clique mecânico duplo + flash realista
+       - Semáforo FIA: beeps potentes harmônicos e buzina de largada
+       - Locução falada em português (Web Speech API) para Mari e Kawan
        ========================================================================== */
     let audioCtx = null;
     let engineOsc = null;
@@ -784,6 +1294,32 @@
     let engineFilter = null;
     let turboOsc = null;
     let turboGain = null;
+    let bgmGain = null;
+    let bgmInterval = null;
+    let bgmStep = 0;
+    let isBgmRunning = false;
+
+    // Frequências das notas para o Synth BGM (em Hertz)
+    const BGM_NOTES = {
+      D2: 73.42, F2: 87.31, G2: 98.00, A2: 110.00, Bb2: 116.54, C3: 130.81,
+      D3: 146.83, F3: 174.61, G3: 196.00, A3: 220.00, C4: 261.63, D4: 293.66,
+      E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00
+    };
+
+    // Padrão de 16 passos estilo Arcade Retro Racing (126 BPM)
+    const BGM_BASS_PATTERN = [
+      BGM_NOTES.D2, BGM_NOTES.D2, BGM_NOTES.F2, BGM_NOTES.D2,
+      BGM_NOTES.G2, BGM_NOTES.D2, BGM_NOTES.A2, BGM_NOTES.D2,
+      BGM_NOTES.Bb2, BGM_NOTES.Bb2, BGM_NOTES.C3, BGM_NOTES.C3,
+      BGM_NOTES.D2, BGM_NOTES.F2, BGM_NOTES.A2, BGM_NOTES.C3
+    ];
+
+    const BGM_LEAD_PATTERN = [
+      BGM_NOTES.D4, 0, BGM_NOTES.A4, 0,
+      BGM_NOTES.F4, BGM_NOTES.G4, BGM_NOTES.A4, 0,
+      BGM_NOTES.G4, 0, BGM_NOTES.E4, 0,
+      BGM_NOTES.F4, BGM_NOTES.E4, BGM_NOTES.D4, 0
+    ];
 
     function initAudio() {
       if (!audioCtx) {
@@ -791,20 +1327,21 @@
         if (AudioContext) {
           audioCtx = new AudioContext();
 
-          // Filtro passa-baixas que aveluda o som e corta frequências estridentes
+          // 1. FILTRO DO MOTOR: Abre os agudos com ganho ressonante (perfeito para celulares!)
           engineFilter = audioCtx.createBiquadFilter();
           engineFilter.type = 'lowpass';
-          engineFilter.frequency.setValueAtTime(380, audioCtx.currentTime);
+          engineFilter.frequency.setValueAtTime(1100, audioCtx.currentTime);
+          engineFilter.Q.setValueAtTime(2.2, audioCtx.currentTime);
 
-          // Oscilador 1: Corpo harmônico do motor 4 tempos do kart (onda triangular)
+          // 2. OSCILADOR PRINCIPAL (DENTE DE SERRA): Ronco rasgado de escapamento de kart 4 tempos
           engineOsc = audioCtx.createOscillator();
-          engineOsc.type = 'triangle';
-          engineOsc.frequency.setValueAtTime(95, audioCtx.currentTime);
+          engineOsc.type = 'sawtooth';
+          engineOsc.frequency.setValueAtTime(115, audioCtx.currentTime);
 
-          // Oscilador 2: Sub-grave da rotação do motor (onda senoidal)
+          // 3. OSCILADOR SUB-GRAVE (TRIÂNGULO): Pulso do pistão mono-cilíndrico 390cc
           engineSubOsc = audioCtx.createOscillator();
-          engineSubOsc.type = 'sine';
-          engineSubOsc.frequency.setValueAtTime(48, audioCtx.currentTime);
+          engineSubOsc.type = 'triangle';
+          engineSubOsc.frequency.setValueAtTime(58, audioCtx.currentTime);
 
           engineGain = audioCtx.createGain();
           engineGain.gain.setValueAtTime(0, audioCtx.currentTime);
@@ -817,54 +1354,190 @@
           engineOsc.start();
           engineSubOsc.start();
 
-          // Oscilador suave de Turbo
+          // 4. TURBO OSCILADOR: Assobio de turbina esportiva
           turboOsc = audioCtx.createOscillator();
           turboGain = audioCtx.createGain();
           turboOsc.type = 'sine';
-          turboOsc.frequency.setValueAtTime(260, audioCtx.currentTime);
+          turboOsc.frequency.setValueAtTime(320, audioCtx.currentTime);
           turboGain.gain.setValueAtTime(0, audioCtx.currentTime);
 
           turboOsc.connect(turboGain);
           turboGain.connect(audioCtx.destination);
           turboOsc.start();
+
+          // 5. CANAL MASTER DE BGM (MÚSICA ARCADE)
+          bgmGain = audioCtx.createGain();
+          bgmGain.gain.setValueAtTime(0.16, audioCtx.currentTime);
+          bgmGain.connect(audioCtx.destination);
         }
       }
+
       if (audioCtx && audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
+
+      if (soundEnabled && !isBgmRunning) {
+        startBgm();
+      }
+    }
+
+    // Gerador de Trilha Sonora Arcade Synthwave
+    function startBgm() {
+      if (!soundEnabled || isBgmRunning) return;
+      isBgmRunning = true;
+      bgmStep = 0;
+
+      if (bgmInterval) clearInterval(bgmInterval);
+      bgmInterval = setInterval(() => {
+        if (!soundEnabled || !audioCtx || !bgmGain) return;
+        if (audioCtx.state === 'suspended') return;
+
+        const curT = audioCtx.currentTime;
+        const bassFreq = BGM_BASS_PATTERN[bgmStep];
+        const leadFreq = BGM_LEAD_PATTERN[bgmStep];
+
+        // Nota de Contra-baixo synth
+        if (bassFreq > 0) {
+          try {
+            const bOsc = audioCtx.createOscillator();
+            const bGain = audioCtx.createGain();
+            bOsc.type = 'triangle';
+            bOsc.frequency.setValueAtTime(bassFreq, curT);
+            bGain.gain.setValueAtTime(0.24, curT);
+            bGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.11);
+            bOsc.connect(bGain);
+            bGain.connect(bgmGain);
+            bOsc.start(curT);
+            bOsc.stop(curT + 0.11);
+          } catch(e) {}
+        }
+
+        // Nota melódica de sintetizador
+        if (leadFreq > 0) {
+          try {
+            const lOsc = audioCtx.createOscillator();
+            const lGain = audioCtx.createGain();
+            lOsc.type = 'sine';
+            lOsc.frequency.setValueAtTime(leadFreq, curT);
+            lGain.gain.setValueAtTime(0.18, curT);
+            lGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.18);
+            lOsc.connect(lGain);
+            lGain.connect(bgmGain);
+            lOsc.start(curT);
+            lOsc.stop(curT + 0.18);
+          } catch(e) {}
+        }
+
+        // Bumbo eletrônico (Kick) nas cabeças dos tempos (0, 4, 8, 12)
+        if (bgmStep % 4 === 0) {
+          try {
+            const kOsc = audioCtx.createOscillator();
+            const kGain = audioCtx.createGain();
+            kOsc.frequency.setValueAtTime(130, curT);
+            kOsc.frequency.exponentialRampToValueAtTime(42, curT + 0.07);
+            kGain.gain.setValueAtTime(0.26, curT);
+            kGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.07);
+            kOsc.connect(kGain);
+            kGain.connect(bgmGain);
+            kOsc.start(curT);
+            kOsc.stop(curT + 0.07);
+          } catch(e) {}
+        }
+
+        // Chimbal eletrônico suave (Hi-hat) nos contratempos (2, 6, 10, 14)
+        if (bgmStep % 4 === 2) {
+          try {
+            const hOsc = audioCtx.createOscillator();
+            const hGain = audioCtx.createGain();
+            hOsc.type = 'triangle';
+            hOsc.frequency.setValueAtTime(1800, curT);
+            hGain.gain.setValueAtTime(0.08, curT);
+            hGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.04);
+            hOsc.connect(hGain);
+            hGain.connect(bgmGain);
+            hOsc.start(curT);
+            hOsc.stop(curT + 0.04);
+          } catch(e) {}
+        }
+
+        bgmStep = (bgmStep + 1) % 16;
+      }, 119); // 126 BPM (16th notes)
+    }
+
+    function stopBgm() {
+      if (bgmInterval) {
+        clearInterval(bgmInterval);
+        bgmInterval = null;
+      }
+      isBgmRunning = false;
+    }
+
+    function setBgmVolume(targetVol) {
+      if (bgmGain && audioCtx) {
+        bgmGain.gain.setTargetAtTime(soundEnabled ? targetVol : 0, audioCtx.currentTime, 0.08);
+      }
+    }
+
+    // Locução com Inteligência do Navegador (Web Speech API)
+    function speakText(text, priority = false) {
+      if (!soundEnabled || !('speechSynthesis' in window)) return;
+      try {
+        if (priority) window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'pt-BR';
+        utter.rate = 1.15;
+        utter.pitch = 1.05;
+        window.speechSynthesis.speak(utter);
+      } catch (e) {}
     }
 
     function updateEngineSound(currentSpeed, isNitroActive) {
       if (!soundEnabled || !audioCtx || !engineGain) return;
 
-      if (gameState !== STATE.RACING) {
+      if (gameState !== STATE.RACING && !isGridCountdown) {
         engineGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
         if (turboGain) turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
         return;
       }
 
-      // Frequência dinâmica do motor do kart conforme aceleração (95Hz em baixa até 220Hz em alta)
-      const normSpeed = Math.max(0.1, Math.min(1.0, currentSpeed / 235));
-      const rpmFreq = 95 + normSpeed * 115;
-      const subFreq = 48 + normSpeed * 50;
+      // 1. ÁUDIO NO GRID DE LARGADA: Marcha lenta acelerando conforme o semáforo
+      if (isGridCountdown) {
+        const idleRpm = 115 + (gridRevBoost * 115); // Sobe de 115Hz até 230Hz!
+        const subRpm = 58 + (gridRevBoost * 58);
+        const filterCutoff = 1100 + (gridRevBoost * 950); // Abre o filtro até 2050Hz
 
-      engineOsc.frequency.setTargetAtTime(rpmFreq, audioCtx.currentTime, 0.05);
-      if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subFreq, audioCtx.currentTime, 0.05);
+        engineOsc.frequency.setTargetAtTime(idleRpm, audioCtx.currentTime, 0.04);
+        if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subRpm, audioCtx.currentTime, 0.04);
+        if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
 
-      // Volume claro e audível, porém aveludado e confortável
-      const targetGain = player.isBraking ? 0.035 : (isNitroActive ? 0.075 : 0.058);
-      engineGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.05);
+        const idleVolume = 0.22 + (gridRevBoost * 0.16); // Volume nítido no alto-falante
+        engineGain.gain.setTargetAtTime(idleVolume, audioCtx.currentTime, 0.04);
+        return;
+      }
+
+      // 2. ÁUDIO NA CORRIDA: Motor roncando alto com giro dinâmico
+      const normSpeed = Math.max(0.1, Math.min(1.0, currentSpeed / 240));
+      const rpmFreq = 115 + (normSpeed * 155); // 115Hz a 270Hz
+      const subFreq = 58 + (normSpeed * 75);
+      const filterCutoff = 1200 + (normSpeed * 1200); // 1200Hz a 2400Hz
+
+      engineOsc.frequency.setTargetAtTime(rpmFreq, audioCtx.currentTime, 0.04);
+      if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subFreq, audioCtx.currentTime, 0.04);
+      if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
+
+      const targetGain = player.isBraking ? 0.16 : (isNitroActive ? 0.36 : 0.28);
+      engineGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.04);
 
       if (isNitroActive) {
-        turboOsc.frequency.setTargetAtTime(280 + normSpeed * 120, audioCtx.currentTime, 0.05);
-        turboGain.gain.setTargetAtTime(0.04, audioCtx.currentTime, 0.05);
+        turboOsc.frequency.setTargetAtTime(320 + normSpeed * 160, audioCtx.currentTime, 0.04);
+        turboGain.gain.setTargetAtTime(0.18, audioCtx.currentTime, 0.04);
       } else {
         turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
       }
     }
 
-    // Toca acordes e notas musicais aveludadas
-    function playSmoothTone(freq, duration, vol = 0.06, type = 'sine') {
+    // Toca notas musicais e tons harmônicos com envelope suave
+    function playSmoothTone(freq, duration, vol = 0.25, type = 'sine') {
       if (!soundEnabled || !audioCtx) return;
       try {
         const osc = audioCtx.createOscillator();
@@ -881,49 +1554,116 @@
       } catch (e) {}
     }
 
+    // Efeito mecânico realista de câmera fotográfica com obturador e flash
+    function playCameraShutter() {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        // 1. Ruído mecânico do espelho levantando
+        const bufSize = Math.floor(audioCtx.sampleRate * 0.045);
+        const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+        const chData = buf.getChannelData(0);
+        for (let i = 0; i < bufSize; i++) {
+          chData[i] = (Math.random() * 2 - 1) * (1 - i / bufSize);
+        }
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buf;
+        const nFilter = audioCtx.createBiquadFilter();
+        nFilter.type = 'bandpass';
+        nFilter.frequency.setValueAtTime(2600, audioCtx.currentTime);
+        nFilter.Q.setValueAtTime(2.5, audioCtx.currentTime);
+        const nGain = audioCtx.createGain();
+        nGain.gain.setValueAtTime(0.45, audioCtx.currentTime);
+        noise.connect(nFilter);
+        nFilter.connect(nGain);
+        nGain.connect(audioCtx.destination);
+        noise.start();
+
+        // 2. Clique metálico agudo de abertura
+        playSmoothTone(2200, 0.04, 0.50, 'triangle');
+
+        // 3. Batida mecânica de fechamento da cortina
+        setTimeout(() => {
+          playSmoothTone(1100, 0.05, 0.45, 'triangle');
+          playSmoothTone(550, 0.06, 0.30, 'sine');
+        }, 60);
+
+        // 4. Silvo sutil do capacitor de flash
+        setTimeout(() => {
+          playSmoothTone(3200, 0.12, 0.20, 'sine');
+        }, 120);
+      } catch (e) {}
+    }
+
     function playSound(type) {
       if (!soundEnabled) return;
       initAudio();
 
+      if (type === 'button_click') {
+        // Clique esportivo tátil em botões
+        playSmoothTone(580, 0.06, 0.35, 'triangle');
+        setTimeout(() => playSmoothTone(880, 0.09, 0.40, 'sine'), 45);
+        return;
+      } else if (type === 'camera_shutter') {
+        // Obturador realista da câmera fotográfica do Kawan
+        playCameraShutter();
+        return;
+      } else if (type === 'countdown_beep') {
+        // Beep oficial FIA de Semáforo: Frequência 880Hz + 1760Hz potente
+        playSmoothTone(880, 0.20, 0.50, 'square');
+        playSmoothTone(1760, 0.20, 0.30, 'triangle');
+        return;
+      } else if (type === 'start_go') {
+        // Bandeirada Verde: Buzina triunfal de pista
+        playSmoothTone(1174.66, 0.55, 0.55, 'square');
+        playSmoothTone(1760.00, 0.55, 0.40, 'triangle');
+        playSmoothTone(2349.32, 0.55, 0.30, 'sine');
+        return;
+      } else if (type === 'champagne') {
+        // Estouro de champagne no pódio
+        playSmoothTone(180, 0.08, 0.35, 'triangle');
+        setTimeout(() => playSmoothTone(1500, 0.22, 0.20, 'sine'), 60);
+        return;
+      }
+
       if (type === 'nearmiss') {
-        // Dois sininhos harmônicos cristalinos e aveludados
-        playSmoothTone(587.33, 0.12, 0.07, 'sine'); // D5
-        setTimeout(() => playSmoothTone(880.00, 0.16, 0.08, 'sine'), 60); // A5
+        // Dois sininhos harmônicos cristalinos
+        playSmoothTone(587.33, 0.12, 0.18, 'sine');
+        setTimeout(() => playSmoothTone(880.00, 0.16, 0.22, 'sine'), 60);
       } else if (type === 'overtake') {
-        // Arpejo de vitória ao ultrapassar amigo: C5 -> G5 -> C6
-        playSmoothTone(523.25, 0.1, 0.06, 'sine');
-        setTimeout(() => playSmoothTone(783.99, 0.12, 0.07, 'sine'), 70);
-        setTimeout(() => playSmoothTone(1046.50, 0.18, 0.08, 'sine'), 140);
+        // Arpejo de vitória ao ultrapassar amigo
+        playSmoothTone(523.25, 0.1, 0.20, 'sine');
+        setTimeout(() => playSmoothTone(783.99, 0.12, 0.22, 'sine'), 70);
+        setTimeout(() => playSmoothTone(1046.50, 0.18, 0.25, 'sine'), 140);
       } else if (type === 'kiss') {
-        // Som doce de beijinho da Penélope: arpejo suave harmônico
-        playSmoothTone(659.25, 0.1, 0.07, 'sine'); // E5
-        setTimeout(() => playSmoothTone(880.00, 0.12, 0.08, 'sine'), 60); // A5
-        setTimeout(() => playSmoothTone(1318.51, 0.18, 0.09, 'sine'), 120); // E6
+        // Som doce de beijinho da Kássia Charmosa
+        playSmoothTone(659.25, 0.1, 0.22, 'sine');
+        setTimeout(() => playSmoothTone(880.00, 0.12, 0.25, 'sine'), 60);
+        setTimeout(() => playSmoothTone(1318.51, 0.18, 0.28, 'sine'), 120);
       } else if (type === 'vigarista_alert') {
-        // Som cômico de alarme do Dick Vigarista
-        playSmoothTone(220, 0.15, 0.08, 'triangle');
-        setTimeout(() => playSmoothTone(185, 0.18, 0.09, 'triangle'), 120);
-        setTimeout(() => playSmoothTone(146, 0.25, 0.1, 'triangle'), 240);
+        // Alarme do Dick Vigarista
+        playSmoothTone(220, 0.15, 0.22, 'triangle');
+        setTimeout(() => playSmoothTone(185, 0.18, 0.25, 'triangle'), 120);
+        setTimeout(() => playSmoothTone(146, 0.25, 0.28, 'triangle'), 240);
       } else if (type === 'vigarista_beat') {
-        // Fanfarra alegre ao derrotar o Dick Vigarista
-        playSmoothTone(523.25, 0.09, 0.08, 'triangle');
-        setTimeout(() => playSmoothTone(659.25, 0.09, 0.08, 'triangle'), 80);
-        setTimeout(() => playSmoothTone(783.99, 0.09, 0.09, 'triangle'), 160);
-        setTimeout(() => playSmoothTone(1046.50, 0.22, 0.1, 'triangle'), 240);
+        // Fanfarra ao derrotar o Dick Vigarista
+        playSmoothTone(523.25, 0.09, 0.25, 'triangle');
+        setTimeout(() => playSmoothTone(659.25, 0.09, 0.25, 'triangle'), 80);
+        setTimeout(() => playSmoothTone(783.99, 0.09, 0.28, 'triangle'), 160);
+        setTimeout(() => playSmoothTone(1046.50, 0.22, 0.32, 'triangle'), 240);
       } else if (type === 'pickup') {
-        // Som suave de coletar item
-        playSmoothTone(659.25, 0.09, 0.08, 'sine'); // E5
-        setTimeout(() => playSmoothTone(987.77, 0.15, 0.08, 'sine'), 60); // B5
+        // Coleta de troféu
+        playSmoothTone(659.25, 0.09, 0.22, 'sine');
+        setTimeout(() => playSmoothTone(987.77, 0.15, 0.25, 'sine'), 60);
       } else if (type === 'slip') {
-        // Derrapagem suave de pneu
-        playSmoothTone(140, 0.22, 0.05, 'triangle');
+        // Derrapagem em poça de óleo
+        playSmoothTone(140, 0.22, 0.20, 'triangle');
       } else if (type === 'crash') {
-        // Batida amortecida suave em barreira de pneus (grave macio, sem chiadeira aguda)
-        playSmoothTone(95, 0.35, 0.13, 'triangle');
-        playSmoothTone(55, 0.5, 0.15, 'sine');
+        // Batida grave amortecida em barreira de pneus
+        playSmoothTone(95, 0.35, 0.35, 'triangle');
+        playSmoothTone(55, 0.5, 0.40, 'sine');
       } else if (type === 'brake') {
-        // Desaceleração suave
-        playSmoothTone(110, 0.12, 0.03, 'sine');
+        // Freio esportivo
+        playSmoothTone(110, 0.12, 0.18, 'sine');
       }
     }
 
@@ -956,6 +1696,8 @@
       vx: 0,
       tilt: 0,
       driftAngle: 0,
+      slipTimer: 0,
+      slipDirection: 0,
 
       speed: 100,
       baseSpeed: 100,
@@ -980,6 +1722,8 @@
         this.vx = 0;
         this.tilt = 0;
         this.driftAngle = 0;
+        this.slipTimer = 0;
+        this.slipDirection = 0;
         this.speed = 100;
         this.nitro = 100;
         this.isNitro = false;
@@ -1054,11 +1798,23 @@
           this.tilt *= 0.76;
         }
 
-        // Recuperação de drift por poça de óleo
-        if (Math.abs(this.driftAngle) > 0.01) {
-          this.driftAngle *= 0.88;
+        // DESLIZE FÍSICO REAL NA POÇA DE ÓLEO DO DICK VIGARISTA
+        if (this.slipTimer > 0) {
+          this.slipTimer--;
+          // Força o kart a deslizar lateralmente pela pista!
+          this.vx += this.slipDirection * 2.8;
+          this.driftAngle = this.slipDirection * 0.50 * (this.slipTimer / 35);
+          this.tilt = this.slipDirection * 0.28;
+          if (this.slipTimer % 3 === 0) {
+            spawnSmoke(this.x, this.y + 24, '#334155');
+          }
         } else {
-          this.driftAngle = 0;
+          // Recuperação suave da estabilidade dos pneus
+          if (Math.abs(this.driftAngle) > 0.01) {
+            this.driftAngle *= 0.88;
+          } else {
+            this.driftAngle = 0;
+          }
         }
 
         this.x += this.vx;
@@ -1124,17 +1880,17 @@
         badge: '😈 #00 Dick Vigarista',
         isVigarista: true
       },
-      penelope: {
-        id: 'penelope',
-        name: 'Penélope Charmosa',
-        number: '5',
-        color: '#f43f5e', // Rosa Pink charmoso
-        secondary: '#ffffff', // Branco pérola
-        accent: '#fbbf24', // Dourado
-        helmet: '#fda4af', // Lenço/capacete retrô rosa
-        visor: '#ffffff', // Óculos brancos
-        badge: '💋 #5 Penélope Charmosa',
-        isPenelope: true
+      kassia: {
+        id: 'kassia',
+        name: 'Kássia Charmosa',
+        number: '19',
+        color: '#2563eb', // Azul do macacão da foto oficial!
+        secondary: '#facc15', // Dourado
+        accent: '#ec4899', // Rosa amor
+        helmet: '#1e293b', // Balaclava/capacete moderno
+        visor: '#38bdf8', // Viseira espelhada azul
+        badge: '👑 💖 Kássia Charmosa',
+        isKassia: true
       }
     };
 
@@ -1142,7 +1898,7 @@
     let trackItems = [];
     let spawnTimer = 0;
     let vigaristaSpawnTimer = 450; // Timer para o Dick Vigarista aparecer
-    let penelopeSpawnTimer = 1800;  // Timer para a Penélope Charmosa (evento especial e mais raro)
+    let kassiaSpawnTimer = 2200;  // Timer reduzido em 15% para a Kássia Charmosa (evento mais raro)
 
     let lastSpawnedRivalIndex = -1;
 
@@ -1180,7 +1936,7 @@
       // Decide se é o Dick Vigarista, a Penélope Charmosa ou um dos 13 amigos
       let charCfg = null;
       const hasVigarista = rivals.some(r => r.isVigarista);
-      const hasPenelope = rivals.some(r => r.isPenelope);
+      const hasKassia = rivals.some(r => r.isKassia);
 
       if (!hasVigarista && vigaristaSpawnTimer <= 0) {
         charCfg = { ...SPECIAL_CHARS.vigarista };
@@ -1188,18 +1944,18 @@
         playSound('vigarista_alert');
         addFloatingText("🚨 DICK VIGARISTA NA PISTA! 😈", V_W / 2, 70, '#ef4444');
         cameraShake = 5;
-      } else if (!hasPenelope && penelopeSpawnTimer <= 0) {
-        charCfg = { ...SPECIAL_CHARS.penelope };
-        penelopeSpawnTimer = 2600 + Math.random() * 1400; // Penélope mais rara e especial
+      } else if (!hasKassia && kassiaSpawnTimer <= 0) {
+        charCfg = { ...SPECIAL_CHARS.kassia };
+        kassiaSpawnTimer = 3100 + Math.random() * 1650; // Presença da Kássia reduzida em 15%
         playSound('kiss');
-        addFloatingText("💋 PENÉLOPE CHARMOSA CHEGOU! 💕", V_W / 2, 70, '#f43f5e');
+        addFloatingText("💋 KÁSSIA CHARMOSA CHEGOU! 💖 💕", V_W / 2, 70, '#f43f5e');
       } else {
         charCfg = getNextRivalConfig();
       }
 
       const initialOffset = (Math.random() * 6 - 3);
       const lastLapRivalBoost = (currentLap === TOTAL_LAPS) ? 1.12 : 1.0;
-      const baseRivalRatio = charCfg.isVigarista ? 0.82 : (charCfg.isPenelope ? 0.74 : (0.80 + Math.random() * 0.14));
+      const baseRivalRatio = charCfg.isVigarista ? 0.82 : (charCfg.isKassia ? 0.74 : (0.80 + Math.random() * 0.14));
       const calculatedSpeed = player.baseSpeed * baseRivalRatio * curStage.rivalSpeedMult * lastLapRivalBoost;
 
       rivals.push({
@@ -1496,11 +2252,20 @@
 
       const w = kart.width;
       const h = kart.height;
-      const primaryColor = kart.color || '#f59e0b';
+
+      // REGRA OFICIAL KART SÃO LUÍS: Toda a frota de karts é AMARELA!
+      // Apenas o Dick Vigarista (roxo da Máquina do Mal) e a Kássia Charmosa (azul) mudam de cor!
+      let primaryColor = '#facc15'; // Amarelo oficial da frota de Kart São Luís
+      if (kart.isVigarista) {
+        primaryColor = '#4c1d95'; // Máquina do Mal do Dick
+      } else if (kart.isKassia) {
+        primaryColor = '#2563eb'; // Macacão/kart da Kássia Charmosa
+      }
+
       const secondaryColor = kart.secondary || '#1e293b';
       const helmetColor = kart.helmet || '#2563eb';
       const visorColor = kart.visor || '#fde047';
-      const numberStr = kart.number ? `#${kart.number}` : '#1';
+      const numberStr = kart.number ? `#${kart.number}` : '#19';
 
       // 1. Sombra suave no asfalto
       ctx.fillStyle = 'rgba(0, 0, 0, 0.42)';
@@ -1557,6 +2322,13 @@
       ctx.roundRect(w / 2 - 13, -h / 2 + 22, 9, 28, 4);
       ctx.fill();
 
+      // Detalhe de vinil preto lateral nos karts amarelos
+      if (!kart.isVigarista && !kart.isKassia) {
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(-w / 2 + 6, -h / 2 + 27, 5, 18);
+        ctx.fillRect(w / 2 - 11, -h / 2 + 27, 5, 18);
+      }
+
       // 5. Carenagem Frontal Aerodinâmica (Nosecone / Bico)
       ctx.fillStyle = primaryColor;
       ctx.beginPath();
@@ -1577,7 +2349,7 @@
       ctx.fill();
 
       // Detalhes extras nos sidepods da Penélope
-      if (kart.isPenelope) {
+      if (kart.isKassia) {
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.arc(-w / 2 + 8.5, -h / 2 + 36, 2.5, 0, Math.PI * 2);
@@ -1587,14 +2359,17 @@
 
       // Número no bico dianteiro
       ctx.fillStyle = kart.isVigarista ? '#dc2626' : '#ffffff';
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.roundRect(-9, -h / 2 + 6, 18, 11, 3);
       ctx.fill();
+      ctx.stroke();
 
       ctx.fillStyle = kart.isVigarista ? '#ffffff' : '#0f172a';
-      ctx.font = '900 8px monospace';
+      ctx.font = '900 8.5px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(numberStr, 0, -h / 2 + 14);
+      ctx.fillText(numberStr, 0, -h / 2 + 14.5);
 
       // 6. Cockpit & Banco Concha
       ctx.fillStyle = '#0f172a';
@@ -1685,21 +2460,25 @@
       ctx.save();
       ctx.translate(kart.x, kart.y - h / 2 - 16);
 
-      const badgeText = kart.badge || `${kart.name}`;
+      const badgeText = isPlayer ? `⭐ #${kart.number || 19} ${currentPilot.name || 'Sales'}` : (kart.badge || `#${kart.number} ${kart.name}`);
       ctx.font = '900 11px "Fredoka", sans-serif';
       const textMetrics = ctx.measureText(badgeText);
       const bgW = textMetrics.width + 16;
       const bgH = 19;
 
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
-      ctx.strokeStyle = primaryColor;
-      ctx.lineWidth = 1.5;
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.90)';
+      ctx.strokeStyle = isPlayer ? '#facc15' : (kart.isVigarista ? '#a855f7' : (kart.isKassia ? '#f43f5e' : '#facc15'));
+      ctx.lineWidth = isPlayer ? 2 : 1.5;
+      if (isPlayer) {
+        ctx.shadowColor = 'rgba(250, 204, 21, 0.75)';
+        ctx.shadowBlur = 8;
+      }
       ctx.beginPath();
       ctx.roundRect(-bgW / 2, -bgH / 2, bgW, bgH, 10);
       ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = isPlayer ? '#facc15' : '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(badgeText, 0, 1);
@@ -1770,15 +2549,21 @@
           ctx.textAlign = 'center';
           ctx.fillText("🏆", 0, 4);
         } else if (item.type === 'oil') {
-          // Poça de Óleo (Derrapagem divertida!)
-          ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+          // Poça de Óleo do Dick Vigarista (Visível, furta-cor e escorregadia!)
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.94)';
           ctx.beginPath();
-          ctx.ellipse(0, 0, 15, 9, item.rotation, 0, Math.PI * 2);
+          ctx.ellipse(0, 0, 18, 11, item.rotation, 0, Math.PI * 2);
           ctx.fill();
 
-          ctx.fillStyle = 'rgba(147, 51, 234, 0.5)';
+          // Reflexo furta-cor roxo/azulado característico de óleo de motor no asfalto
+          ctx.fillStyle = 'rgba(168, 85, 247, 0.65)';
           ctx.beginPath();
-          ctx.ellipse(-3, -2, 6, 3, 0, 0, Math.PI * 2);
+          ctx.ellipse(-3, -2, 8, 4, item.rotation, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.45)';
+          ctx.beginPath();
+          ctx.ellipse(3, 2, 6, 3, item.rotation, 0, Math.PI * 2);
           ctx.fill();
         }
 
@@ -1915,9 +2700,19 @@
        LOOP PRINCIPAL (UPDATE & RENDER)
        ========================================================================== */
     function update() {
-      updateEngineSound(player.speed, player.isNitro);
-
       if (gameState === STATE.RACING) {
+        if (isGridCountdown) {
+          // Karts 100% RIGOROSAMENTE PARADOS no grid de largada!
+          // Zero movimento, zero física, zero aceleração até a bandeirada verde!
+          player.speed = 0;
+          player.steerLeft = false;
+          player.steerRight = false;
+          player.isBraking = false;
+          player.isNitro = false;
+          updateEngineSound(0, false);
+          return;
+        }
+        updateEngineSound(player.speed, player.isNitro);
         const curStage = TRACK_STAGES[currentStageIndex] || TRACK_STAGES[0];
         const lapSpeedBoost = (currentLap === TOTAL_LAPS) ? 1.18 : 1.0;
         const relativeSpeed = player.speed * 0.12 * lapSpeedBoost;
@@ -1985,7 +2780,8 @@
 
         // Atualiza os timers dos personagens especiais
         vigaristaSpawnTimer -= relativeSpeed;
-        penelopeSpawnTimer -= relativeSpeed;
+        kassiaSpawnTimer -= relativeSpeed;
+        penelopeSpawnTimer = kassiaSpawnTimer;
 
         spawnTimer -= relativeSpeed;
         if (spawnTimer <= 0) {
@@ -2003,7 +2799,7 @@
           r.y += deltaSpeed;
 
           // 1. COMPORTAMENTO DOS AMIGOS DO GRUPO: CORREM LIMPOS, SEM SE JOGAR!
-          if (!r.isVigarista && !r.isPenelope) {
+          if (!r.isVigarista && !r.isKassia && !r.isPenelope) {
             r.swayTimer = (r.swayTimer || 0) + 0.015;
             r.x = r.baseX + Math.sin(r.swayTimer) * 2.5; // Pilotagem suave mantendo a faixa
             r.tilt = 0;
@@ -2031,23 +2827,24 @@
             // O Dick Vigarista joga poças de óleo para trás!
             r.trapTimer = (r.trapTimer || 180) - 1;
             if (r.trapTimer <= 0 && r.y > -50 && r.y < V_H - 120) {
-              r.trapTimer = 220 + Math.random() * 140;
+              r.trapTimer = 180 + Math.random() * 110;
               trackItems.push({
                 x: r.x,
                 y: r.y + 40,
                 type: 'oil',
-                size: 26,
-                rotation: 0
+                size: 32,
+                rotation: Math.random() * Math.PI
               });
-              addFloatingText("ÓLEO DO VIGARISTA! 😈", r.x, r.y - 25, '#c084fc');
+              addFloatingText("ÓLEO DO VIGARISTA! 😈 DESVIE!", r.x, r.y - 25, '#c084fc');
+              playSound('vigarista_alert');
               spawnSmoke(r.x, r.y + 35, '#3b0764');
             }
           }
 
-          // 3. COMPORTAMENTO DA PENÉLOPE CHARMOSA: JOGA BEIJINHOS QUE VALEM PONTOS!
-          if (r.isPenelope) {
+          // 3. COMPORTAMENTO DA KÁSSIA CHARMOSA: JOGA BEIJINHOS QUE VALEM PONTOS!
+          if (r.isKassia || r.isPenelope) {
             r.swayTimer = (r.swayTimer || 0) + 0.018;
-            r.x = r.baseX + Math.sin(r.swayTimer) * 3;
+            r.x = (r.baseX || r.x) + Math.sin(r.swayTimer) * 3;
             r.tilt = 0;
 
             r.kissTimer = (r.kissTimer || 80) - 1;
@@ -2060,7 +2857,7 @@
                 size: 26,
                 rotation: 0
               });
-              addFloatingText("💋 Beijinho!", r.x, r.y - 25, '#fb7185');
+              addFloatingText("💋 Beijinho da Kássia!", r.x, r.y - 25, '#fb7185');
             }
           }
 
@@ -2112,12 +2909,12 @@
               addFloatingText("Dick: 'Maldito Kart!' 💨", r.x, r.y - 25, '#c084fc');
               cameraShake = 6;
               for (let k = 0; k < 15; k++) spawnSmoke(r.x, r.y + 20, '#18181b');
-            } else if (r.isPenelope) {
-              // Ultrapassou a Penélope Charmosa!
+            } else if (r.isKassia || r.isPenelope) {
+              // Ultrapassou a Kássia Charmosa!
               const bonus = 600 * comboMultiplier;
               score += bonus;
               playSound('kiss');
-              addFloatingText(`PASSOU A PENÉLOPE! 💋 +${bonus}`, player.x, player.y - 50, '#f43f5e');
+              addFloatingText(`PASSOU A KÁSSIA! 💖 +${bonus}`, player.x, player.y - 50, '#f43f5e');
               // Ela solta uma chuva de beijinhos!
               for (let k = -1; k <= 1; k++) {
                 trackItems.push({
@@ -2199,17 +2996,20 @@
               playSound('pickup');
             } else if (item.type === 'oil') {
               if (player.kissPowerTimer > 0) {
-                // Imune ao óleo sob o efeito do beijo da Penélope!
-                addFloatingText("IMUNE AO ÓLEO! 💖", player.x, player.y - 40, '#fb7185');
+                // Imune ao óleo sob o efeito do beijo da Kássia!
+                addFloatingText("ESCUDO DO AMOR! 💖 IMUNE AO ÓLEO!", player.x, player.y - 40, '#fb7185');
                 playSound('pickup');
                 for (let k = 0; k < 4; k++) spawnSmoke(player.x, player.y, '#f43f5e');
               } else {
-                // Poça de óleo dá um drift rápido
-                player.driftAngle = (Math.random() < 0.5 ? -1 : 1) * 0.35;
-                player.speed = Math.max(player.minSpeed, player.speed - 20);
-                addFloatingText("DERRAPOU! ⚠️", player.x, player.y - 40, '#f87171');
+                // Poça de óleo do Dick Vigarista: o kart desliza e derrapa se não desviar!
+                player.slipTimer = 35; // Duração do deslize físico lateral
+                player.slipDirection = (Math.random() < 0.5 ? -1 : 1);
+                player.driftAngle = player.slipDirection * 0.55;
+                player.speed = Math.max(player.minSpeed, player.speed - 30);
+                addFloatingText("DERRAPOU NO ÓLEO! ⚠️ DESVIE!", player.x, player.y - 40, '#f87171');
                 playSound('slip');
-                cameraShake = 5;
+                cameraShake = 7;
+                for (let k = 0; k < 6; k++) spawnSmoke(player.x, player.y + 25, '#0f172a');
               }
             }
             trackItems.splice(i, 1);
@@ -2334,8 +3134,8 @@
        ========================================================================== */
     function resizeCanvas() {
       const dpr = window.devicePixelRatio || 1;
-      const w = canvas.parentElement.clientWidth;
-      const h = canvas.parentElement.clientHeight;
+      const w = (canvas.parentElement && canvas.parentElement.clientWidth) || window.innerWidth || 400;
+      const h = (canvas.parentElement && canvas.parentElement.clientHeight) || window.innerHeight || 700;
 
       canvas.width = Math.min(w, 480) * dpr;
       canvas.height = h * dpr;
@@ -2391,6 +3191,9 @@
       const podiumModal = document.getElementById('podium-modal');
       if (podiumModal) podiumModal.style.display = 'none';
       document.getElementById('pilot-modal').style.display = 'none';
+      const wModal = document.getElementById('welcome-modal'); if (wModal) wModal.style.display = 'none';
+      const mModal = document.getElementById('mari-modal'); if (mModal) mModal.style.display = 'none';
+      const gOverlay = document.getElementById('grid-overlay'); if (gOverlay) gOverlay.style.display = 'none';
     }
 
     // Botão de Avançar de Fase no Pódio
@@ -2405,177 +3208,259 @@
     }
 
     // Botão de Reinício no Game Over
-    document.getElementById('btn-restart').addEventListener('click', startRace);
+    document.getElementById('btn-restart').addEventListener('click', () => { document.getElementById('gameover-modal').style.display = 'none'; triggerGridSequence(); });
 
-    // Botão de Som
+    // Botão de Som (se presente na interface)
     const btnSound = document.getElementById('btn-sound-toggle');
-    btnSound.textContent = soundEnabled ? '🔊' : '🔇';
-    btnSound.addEventListener('click', () => {
-      initAudio();
-      soundEnabled = !soundEnabled;
-      localStorage.setItem('kart_sl_sound', soundEnabled ? 'true' : 'false');
+    if (btnSound) {
       btnSound.textContent = soundEnabled ? '🔊' : '🔇';
-    });
-
-    // Modal de Escolha do Piloto (LOBBY DOS AMIGOS)
-    const pilotModal = document.getElementById('pilot-modal');
-    const btnPilotConfig = document.getElementById('btn-pilot-config');
-    const pilotListEl = document.getElementById('pilot-select-list');
-    const customPilotInput = document.getElementById('custom-pilot-name');
-    const btnConfirmPilot = document.getElementById('btn-confirm-pilot');
-
-    function drawPilotPreview() {
-      const previewCanvas = document.getElementById('pilot-preview-canvas');
-      if (!previewCanvas) return;
-      const pctx = previewCanvas.getContext('2d');
-      pctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
-
-      pctx.save();
-      pctx.translate(previewCanvas.width / 2, previewCanvas.height / 2);
-      pctx.scale(0.85, 0.85);
-
-      // Sombra
-      pctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-      pctx.beginPath();
-      pctx.roundRect(-20, -32, 40, 64, 8);
-      pctx.fill();
-
-      // Para-choque do kart
-      pctx.strokeStyle = '#18181b';
-      pctx.lineWidth = 3;
-      pctx.beginPath();
-      pctx.roundRect(-21, -33, 42, 66, 10);
-      pctx.stroke();
-
-      // Pneus pretos de kart
-      pctx.fillStyle = '#111827';
-      pctx.beginPath();
-      pctx.roundRect(-23, -26, 8, 14, 3);
-      pctx.roundRect(15, -26, 8, 14, 3);
-      pctx.roundRect(-24, 14, 9, 17, 3);
-      pctx.roundRect(15, 14, 9, 17, 3);
-      pctx.fill();
-
-      // Sidepods com a cor do piloto
-      pctx.fillStyle = currentPilot.color || '#f59e0b';
-      pctx.beginPath();
-      pctx.roundRect(-18, -12, 8, 26, 4);
-      pctx.roundRect(10, -12, 8, 26, 4);
-      pctx.fill();
-
-      // Bico dianteiro aerodinâmico
-      pctx.beginPath();
-      pctx.moveTo(-10, -30);
-      pctx.lineTo(10, -30);
-      pctx.lineTo(13, -14);
-      pctx.lineTo(-13, -14);
-      pctx.closePath();
-      pctx.fill();
-
-      // Placa com o Número
-      pctx.fillStyle = '#ffffff';
-      pctx.beginPath();
-      pctx.roundRect(-8, -28, 16, 10, 3);
-      pctx.fill();
-      pctx.fillStyle = '#000000';
-      pctx.font = '900 8px monospace';
-      pctx.textAlign = 'center';
-      pctx.fillText(`#${currentPilot.number}`, 0, -20);
-
-      // Cockpit
-      pctx.fillStyle = '#0f172a';
-      pctx.beginPath();
-      pctx.roundRect(-9, -12, 18, 30, 5);
-      pctx.fill();
-
-      // Macacão / Ombros
-      pctx.fillStyle = currentPilot.secondary || '#ef4444';
-      pctx.beginPath();
-      pctx.roundRect(-8, 0, 16, 11, 4);
-      pctx.fill();
-
-      // Capacete de competição
-      pctx.fillStyle = currentPilot.helmet || '#2563eb';
-      pctx.beginPath();
-      pctx.arc(0, 6, 7.5, 0, Math.PI * 2);
-      pctx.fill();
-
-      // Viseira reflexiva
-      pctx.fillStyle = currentPilot.visor || '#fde047';
-      pctx.beginPath();
-      pctx.arc(0, 3, 5, Math.PI * 1.1, Math.PI * 1.9);
-      pctx.fill();
-
-      pctx.restore();
-    }
-
-    function renderPilotOptions() {
-      pilotListEl.innerHTML = '';
-      FRIENDS_LIST.forEach(friend => {
-        const opt = document.createElement('div');
-        const isSel = friend.name.toLowerCase() === currentPilot.name.toLowerCase();
-        opt.className = `pilot-card-opt ${isSel ? 'selected' : ''}`;
-        opt.innerHTML = `
-          <div style="background: ${friend.color}; color: #000; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 900;">
-            #${friend.number}
-          </div>
-          <span style="color: #fff; font-size: 11px;">${friend.name}</span>
-        `;
-        opt.addEventListener('click', () => {
-          document.querySelectorAll('.pilot-card-opt').forEach(el => el.classList.remove('selected'));
-          opt.classList.add('selected');
-          currentPilot = { ...friend };
-          customPilotInput.value = friend.name;
-          document.getElementById('hud-pilot-val').textContent = friend.badge;
-          document.getElementById('hud-pilot-val').style.color = friend.color;
-          const pName = document.getElementById('preview-pilot-name');
-          if (pName) pName.textContent = friend.badge;
-          drawPilotPreview();
-        });
-        pilotListEl.appendChild(opt);
+      btnSound.addEventListener('click', () => {
+        initAudio();
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('kart_sl_sound', soundEnabled ? 'true' : 'false');
+        btnSound.textContent = soundEnabled ? '🔊' : '🔇';
       });
-      drawPilotPreview();
     }
 
-    customPilotInput.addEventListener('input', () => {
-      const customName = customPilotInput.value.trim() || 'Piloto';
-      currentPilot.name = customName;
-      currentPilot.badge = `#${currentPilot.number} ${customName}`;
-      const pName = document.getElementById('preview-pilot-name');
-      if (pName) pName.textContent = currentPilot.badge;
-      document.getElementById('hud-pilot-val').textContent = currentPilot.badge;
-    });
+    // GERENCIAMENTO DA JORNADA OFICIAL: MODELO QUIZ DA ELEIÇÃO -> MARI -> KAWAN GRID
+    const lobbyScreen = document.getElementById('lobby-screen');
+    const mariScreen = document.getElementById('mari-screen');
+    const btnGoToMari = document.getElementById('btn-go-to-mari') || document.getElementById('btnGoToMari');
+    const btnToGrid = document.getElementById('btn-to-grid');
+    const txtPlayerName = document.getElementById('txtPlayerName');
+    const gridOverlay = document.getElementById('grid-overlay');
+    const cameraFlash = document.getElementById('camera-flash');
+    const lobbyAudioBar = document.getElementById('lobby-audio-bar');
+    const lobbyAudioIcon = document.getElementById('lobby-audio-icon');
+    const lobbyAudioText = document.getElementById('lobby-audio-text');
 
-    btnPilotConfig.addEventListener('click', () => {
-      renderPilotOptions();
-      pilotModal.style.display = 'flex';
-    });
+    function updateAudioUI() {
+      const icon = soundEnabled ? '🔊' : '🔇';
+      if (btnSound) btnSound.textContent = icon;
+      if (lobbyAudioIcon) lobbyAudioIcon.textContent = icon;
+      if (lobbyAudioText) {
+        lobbyAudioText.textContent = soundEnabled ? 'ÁUDIO DO KART ATIVADO • TOQUE PARA OUVIR' : 'ÁUDIO SILENCIADO • TOQUE PARA ATIVAR';
+      }
+    }
 
-    btnConfirmPilot.addEventListener('click', () => {
-      const customName = customPilotInput.value.trim();
-      if (customName) {
+    if (lobbyAudioBar) {
+      lobbyAudioBar.addEventListener('click', () => {
+        initAudio();
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('kart_sl_sound', soundEnabled ? 'true' : 'false');
+        if (soundEnabled) {
+          startBgm();
+          playSound('button_click');
+        } else {
+          stopBgm();
+          if (engineGain) engineGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        }
+        updateAudioUI();
+      });
+    }
+
+    if (btnGoToMari) {
+      btnGoToMari.addEventListener('click', () => {
+        initAudio();
+        playSound('button_click');
+        const customName = (txtPlayerName && txtPlayerName.value.trim()) || 'Sales';
         currentPilot.name = customName;
         currentPilot.badge = `#${currentPilot.number} ${customName}`;
         document.getElementById('hud-pilot-val').textContent = currentPilot.badge;
-      }
-      pilotModal.style.display = 'none';
-      startRace();
-    });
+
+        document.getElementById('mari-pilot-display').textContent = customName;
+        document.getElementById('mari-kart-display').textContent = `#${currentPilot.number} Honda 390cc`;
+
+        lobbyScreen.style.display = 'none';
+        mariScreen.style.display = 'flex';
+
+        // Mari fala com o piloto!
+        speakText(`Piloto ${customName}, sua vaga na bateria das vinte e trinta está confirmada! Vá para o grid com o Kawan!`);
+      });
+    }
+
+    if (btnToGrid) {
+      btnToGrid.addEventListener('click', () => {
+        initAudio();
+        playSound('button_click');
+        mariScreen.style.display = 'none';
+        triggerGridSequence();
+      });
+    }
+
+    // SEQUÊNCIA CINEMÁTICA DO GRID: KAWAN FOTÓGRAFO + SEMÁFORO FIA
+    function triggerGridSequence() {
+      score = 0;
+      distanceTraveled = 0;
+      nearMissCount = 0;
+      overtakesCount = 0;
+      kissesCollected = 0;
+      currentLap = 1;
+      player.reset();
+      player.speed = 0; // Rigorosamente ZERO km/h no grid!
+      player.x = getLaneCenter(1);
+      player.y = V_H - 145;
+
+      isGridCountdown = true; // CONGELA física e colisões!
+      gridRevBoost = 0;
+      setBgmVolume(0.05); // BGM abaixa suavemente para os motores e beeps brilharem!
+
+      rivals = [];
+      trackItems = [];
+
+      // Spawna os amigos nas faixas 0 e 2, perfilados À FRENTE no grid
+      const availableFriends = FRIENDS_LIST.filter(f => f.name.toLowerCase() !== currentPilot.name.toLowerCase());
+      const gridRival1 = availableFriends[0] || FRIENDS_LIST[1];
+      const gridRival2 = availableFriends[1] || FRIENDS_LIST[2];
+
+      rivals.push({
+        ...gridRival1,
+        width: 44,
+        height: 70,
+        baseX: getLaneCenter(0),
+        x: getLaneCenter(0),
+        y: player.y - 130, // À frente no slot do grid
+        speed: 0,
+        nearMissAwarded: false,
+        overtakeAwarded: false
+      });
+
+      rivals.push({
+        ...gridRival2,
+        width: 44,
+        height: 70,
+        baseX: getLaneCenter(2),
+        x: getLaneCenter(2),
+        y: player.y - 120, // À frente no slot do grid
+        speed: 0,
+        nearMissAwarded: false,
+        overtakeAwarded: false
+      });
+
+      gameState = STATE.RACING; // Renderizador ativo mostrando a pista e karts perfilados!
+      gridOverlay.style.display = 'flex';
+
+      const tLight1 = document.getElementById('t-light-1');
+      const tLight2 = document.getElementById('t-light-2');
+      const tLight3 = document.getElementById('t-light-3');
+      const kawanCard = document.getElementById('kawan-photo-card');
+      const kawanMsg = document.getElementById('kawan-message');
+      const statusLabel = document.getElementById('grid-status-label');
+
+      tLight1.className = 'traffic-light';
+      tLight2.className = 'traffic-light';
+      tLight3.className = 'traffic-light';
+
+      kawanCard.style.display = 'flex';
+      kawanMsg.textContent = 'Passando no grid... Olhem para a foto, pilotos!';
+      statusLabel.textContent = '📸 KAWAN REGISTRANDO O GRID OFICIAL...';
+
+      // Disparo de Flash 1 do Kawan (700ms)
+      setTimeout(() => {
+        triggerFlash();
+        playSound('camera_shutter');
+        kawanMsg.textContent = '📸 SORRIAM! Mais um clique na reta principal!';
+        speakText("Atenção pilotos, olhem para a foto!");
+      }, 700);
+
+      // Disparo de Flash 2 do Kawan (1500ms)
+      setTimeout(() => {
+        triggerFlash();
+        playSound('camera_shutter');
+        kawanMsg.textContent = '✅ Fotos salvas! Semáforo de largada liberado!';
+      }, 1500);
+
+      // Início do Semáforo Oficial (2500ms): 🔴 1... Motores em marcha lenta!
+      setTimeout(() => {
+        kawanCard.style.display = 'none';
+        tLight1.classList.add('active-red');
+        gridRevBoost = 0.35; // Motor começa a roncar
+        playSound('countdown_beep');
+        statusLabel.textContent = '🔴 1... MOTORES LIGADOS!';
+      }, 2500);
+
+      // Luz 2 (3600ms): 🔴 🔴 2... Subindo o giro!
+      setTimeout(() => {
+        tLight2.classList.add('active-red');
+        gridRevBoost = 0.70; // Giro subindo
+        playSound('countdown_beep');
+        statusLabel.textContent = '🔴 2... SUBINDO O GIRO NA RETA!';
+      }, 3600);
+
+      // Luz 3 (4700ms): 🔴 🔴 🔴 3... Giro alto no corte!
+      setTimeout(() => {
+        tLight3.classList.add('active-red');
+        gridRevBoost = 1.0; // Giro máximo no corte!
+        playSound('countdown_beep');
+        statusLabel.textContent = '🔴 3... ATENÇÃO TOTAL!';
+      }, 4700);
+
+      // BANDEIRADA VERDE / LARGADA (5800ms) -> AGORA SIM A CORRIDA COMEÇA!
+      setTimeout(() => {
+        tLight1.className = 'traffic-light active-green';
+        tLight2.className = 'traffic-light active-green';
+        tLight3.className = 'traffic-light active-green';
+        playSound('start_go');
+        statusLabel.textContent = '🟢 BANDEIRADA VERDE! ACELERA!';
+        addFloatingText("🟢 LARGADA! PISA FUNDO!", V_W / 2, 80, '#22c55e');
+        speakText("Largada liberada! Acelera!", true);
+
+        isGridCountdown = false; // DESCONGELA a corrida! Física ativa!
+        gridRevBoost = 0;
+        setBgmVolume(0.14); // BGM volta a empolgar junto com o ronco do motor!
+        player.speed = player.baseSpeed; // Arrancada em 100 KM/H!
+        raceStartTime = Date.now();
+        currentLapStartTime = Date.now();
+
+        // Rivais do grid arrancam juntos acelerando na reta
+        rivals.forEach(r => {
+          r.speed = player.baseSpeed * 0.88;
+        });
+
+        // Some o overlay suavemente
+        setTimeout(() => {
+          gridOverlay.style.display = 'none';
+        }, 800);
+      }, 5800);
+    }
+
+    function triggerFlash() {
+      cameraFlash.style.opacity = '0.92';
+      setTimeout(() => {
+        cameraFlash.style.opacity = '0';
+      }, 120);
+    }
+
+    
+    function isAnyOverlayOpen() {
+      const lobby = document.getElementById('lobby-screen');
+      const mari = document.getElementById('mari-screen');
+      const grid = document.getElementById('grid-overlay');
+      const go = document.getElementById('gameover-modal');
+      const pod = document.getElementById('podium-modal');
+      return (lobby && lobby.style.display !== 'none') ||
+             (mari && mari.style.display !== 'none') ||
+             (grid && grid.style.display === 'flex') ||
+             (go && go.style.display === 'flex') ||
+             (pod && pod.style.display === 'flex');
+    }
 
     // Controles no Teclado (PC)
     window.addEventListener('keydown', (e) => {
-      if (pilotModal && pilotModal.style.display === 'flex') {
-        if (e.code === 'Space' || e.code === 'Enter') {
-          const customName = customPilotInput.value.trim();
-          if (customName) {
-            currentPilot.name = customName;
-            currentPilot.badge = `#${currentPilot.number} ${customName}`;
-            document.getElementById('hud-pilot-val').textContent = currentPilot.badge;
+      if (isAnyOverlayOpen()) {
+        if (e.code === 'Enter') {
+          const lobby = document.getElementById('lobby-screen');
+          if (lobby && lobby.style.display !== 'none') {
+            document.getElementById('btnGoToMari').click();
+            return;
           }
-          pilotModal.style.display = 'none';
-          startRace();
-          return;
+          const mari = document.getElementById('mari-screen');
+          if (mari && mari.style.display !== 'none') {
+            document.getElementById('btn-to-grid').click();
+            return;
+          }
         }
+        return;
       }
 
       if (gameState === STATE.PODIUM) {
@@ -2595,6 +3480,8 @@
         return;
       }
 
+      if (isGridCountdown) return;
+
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         player.steerLeft = true;
       } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
@@ -2608,6 +3495,13 @@
     });
 
     window.addEventListener('keyup', (e) => {
+      if (isGridCountdown) {
+        player.steerLeft = false;
+        player.steerRight = false;
+        player.isNitro = false;
+        player.isBraking = false;
+        return;
+      }
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         player.steerLeft = false;
       } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
@@ -2629,7 +3523,8 @@
       const handleDown = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (gameState === STATE.WAITING && pilotModal.style.display !== 'flex') startRace();
+        if (gameState === STATE.WAITING && !isAnyOverlayOpen()) triggerGridSequence();
+        if (isGridCountdown) return;
         btn.classList.add('active');
         onDown();
       };
@@ -2647,25 +3542,38 @@
       btn.addEventListener('pointerleave', handleUp);
     }
 
-    bindBtn(btnLeft, () => player.steerLeft = true, () => player.steerLeft = false);
-    bindBtn(btnRight, () => player.steerRight = true, () => player.steerRight = false);
-    bindBtn(btnBrake, () => { player.isBraking = true; playSound('brake'); }, () => player.isBraking = false);
-    bindBtn(btnNitro, () => player.isNitro = true, () => player.isNitro = false);
+    bindBtn(btnLeft, () => { if (!isGridCountdown) player.steerLeft = true; }, () => player.steerLeft = false);
+    bindBtn(btnRight, () => { if (!isGridCountdown) player.steerRight = true; }, () => player.steerRight = false);
+    bindBtn(btnBrake, () => { if (!isGridCountdown) { player.isBraking = true; playSound('brake'); } }, () => player.isBraking = false);
+    bindBtn(btnNitro, () => { if (!isGridCountdown) player.isNitro = true; }, () => player.isNitro = false);
 
     // Desbloqueio imediato do áudio ao primeiro toque/clique em qualquer lugar da tela
-    window.addEventListener('pointerdown', () => initAudio(), { passive: true });
+    function unlockAudioEverywhere() {
+      initAudio();
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (soundEnabled && !isBgmRunning) {
+        startBgm();
+      }
+      updateAudioUI();
+    }
+    window.addEventListener('pointerdown', unlockAudioEverywhere, { passive: true });
+    window.addEventListener('touchstart', unlockAudioEverywhere, { passive: true });
+    window.addEventListener('click', unlockAudioEverywhere, { passive: true });
+    window.addEventListener('keydown', unlockAudioEverywhere, { passive: true });
+    
+    // Tenta inicialização automática logo no carregamento
+    window.addEventListener('load', () => {
+      initAudio();
+      updateAudioUI();
+    });
 
     // Toque na tela para iniciar (quando o modal não estiver aberto)
     canvas.addEventListener('pointerdown', (e) => {
       initAudio();
-      if (gameState === STATE.WAITING && pilotModal.style.display !== 'flex') {
-        startRace();
-      }
+      if (gameState === STATE.WAITING && !isAnyOverlayOpen()) { triggerGridSequence(); }
     });
-
-    // INICIALIZAÇÃO DO LOBBY DE PILOTOS
-    renderPilotOptions();
-    drawPilotPreview();
 
     // Inicia o Loop do Jogo
     requestAnimationFrame(gameLoop);
