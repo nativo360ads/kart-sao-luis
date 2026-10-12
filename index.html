@@ -1723,14 +1723,14 @@
       baseSpeed: 100,
       minSpeed: 60,
       maxNormalSpeed: 175,
-      maxNitroSpeed: 200,
+      maxNitroSpeed: 188,
 
       nitro: 100,
       maxNitro: 100,
       isNitro: false,
       isBraking: false,
       kissPowerTimer: 0,
-      maxKissTurboSpeed: 212, // Reduzido em 20% (de 265 para 212 km/h) a pedido de Sales
+      maxKissTurboSpeed: 195, // Reduzido em mais 8% (de 212 para 195 km/h) a pedido de Sales
 
       steerLeft: false,
       steerRight: false,
@@ -1759,19 +1759,28 @@
           this.kissPowerTimer -= 1;
           this.nitro = this.maxNitro; // Nitro infinito durante o poder do coração
 
-          const targetSafeSpeed = (currentLap === TOTAL_LAPS) ? (this.maxNormalSpeed + 15) : this.maxNormalSpeed;
-
-          // Mecânica suave: Desacelera antes do poder acabar para evitar batidas bruscas!
-          if (this.kissPowerTimer > 90) {
-            // Fase de Super Velocidade (-20%: ~212 km/h com controle impecável)
-            this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 2.4);
-            cameraShake = Math.max(cameraShake, 2.4);
-          } else {
-            // Últimos 1.5s: Desacelera suavemente em direção à velocidade segura antes do término do poder
-            if (this.speed > targetSafeSpeed) {
-              this.speed = Math.max(targetSafeSpeed, this.speed - 1.4);
+          if (this.isBraking) {
+            // Permite frear manualmente mesmo durante o poder se o jogador quiser desacelerar
+            this.speed = Math.max(50, this.speed - 5.8);
+            if (Math.random() < 0.6) {
+              spawnSmoke(this.x - 14, this.y + 24, '#cbd5e1');
+              spawnSmoke(this.x + 14, this.y + 24, '#cbd5e1');
             }
-            cameraShake = Math.max(cameraShake, 1.0);
+          } else {
+            const targetSafeSpeed = (currentLap === TOTAL_LAPS) ? (this.maxNormalSpeed + 10) : this.maxNormalSpeed;
+
+            // Desaceleração exatos 5 SEGUNDOS (300 frames) antes do término do poder!
+            if (this.kissPowerTimer > 300) {
+              // Fase de Super Velocidade inicial (~195 km/h)
+              this.speed = Math.min(this.maxKissTurboSpeed, this.speed + 2.0);
+              cameraShake = Math.max(cameraShake, 2.0);
+            } else {
+              // 5 segundos inteiros antes do término: desacelera para velocidade normal segura mantendo o escudo!
+              if (this.speed > targetSafeSpeed) {
+                this.speed = Math.max(targetSafeSpeed, this.speed - 1.2);
+              }
+              cameraShake = Math.max(cameraShake, 0.8);
+            }
           }
 
           // Chamas vermelhas e douradas de super turbo
@@ -1784,22 +1793,23 @@
           if (kissHud) {
             kissHud.style.display = 'block';
             const secsLeft = (this.kissPowerTimer / 60).toFixed(1);
-            if (this.kissPowerTimer > 90) {
+            if (this.kissPowerTimer > 300) {
               kissHud.textContent = `❤️ CORAÇÃO TURBO ATIVO! ${secsLeft}s ⚡`;
               kissHud.style.background = 'rgba(220, 38, 38, 0.92)';
             } else {
-              kissHud.textContent = `❤️ DESACELERANDO COM SEGURANÇA... ${secsLeft}s 🛡️`;
-              kissHud.style.background = 'rgba(234, 88, 12, 0.92)';
+              kissHud.textContent = `🛡️ VELOCIDADE NORMAL • ESCUDO ATIVO! ${secsLeft}s ✨`;
+              kissHud.style.background = 'rgba(16, 185, 129, 0.92)'; // Verde de proteção e total controle
             }
           }
           if (this.kissPowerTimer <= 0) {
             if (kissHud) kissHud.style.display = 'none';
           }
         } else if (this.isBraking) {
-          this.speed = Math.max(this.minSpeed, this.speed - 3.2);
-          if (Math.random() < 0.35) {
-            spawnSmoke(this.x - 14, this.y + 24, '#94a3b8');
-            spawnSmoke(this.x + 14, this.y + 24, '#94a3b8');
+          // FRENAGEM POTENTE E RESPONSIVA (-5.8 KM/H POR FRAME)
+          this.speed = Math.max(50, this.speed - 5.8);
+          if (Math.random() < 0.55) {
+            spawnSmoke(this.x - 14, this.y + 24, '#cbd5e1');
+            spawnSmoke(this.x + 14, this.y + 24, '#cbd5e1');
           }
         } else if (this.isNitro && this.nitro > 0) {
           const effectiveNitroMax = (currentLap === TOTAL_LAPS) ? (this.maxNitroSpeed + 25) : this.maxNitroSpeed;
