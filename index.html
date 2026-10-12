@@ -1327,21 +1327,21 @@
         if (AudioContext) {
           audioCtx = new AudioContext();
 
-          // 1. FILTRO DO MOTOR: Abre os agudos com ganho ressonante (perfeito para celulares!)
+          // 1. FILTRO DO MOTOR: Low-pass suave e quente que elimina qualquer agudo ou chiado irritante
           engineFilter = audioCtx.createBiquadFilter();
           engineFilter.type = 'lowpass';
-          engineFilter.frequency.setValueAtTime(1100, audioCtx.currentTime);
-          engineFilter.Q.setValueAtTime(2.2, audioCtx.currentTime);
+          engineFilter.frequency.setValueAtTime(320, audioCtx.currentTime);
+          engineFilter.Q.setValueAtTime(0.7, audioCtx.currentTime);
 
-          // 2. OSCILADOR PRINCIPAL (DENTE DE SERRA): Ronco rasgado de escapamento de kart 4 tempos
+          // 2. OSCILADOR PRINCIPAL (TRIÂNGULO): Ronco suave, harmônico e aveludado de kart 4T
           engineOsc = audioCtx.createOscillator();
-          engineOsc.type = 'sawtooth';
-          engineOsc.frequency.setValueAtTime(115, audioCtx.currentTime);
+          engineOsc.type = 'triangle';
+          engineOsc.frequency.setValueAtTime(80, audioCtx.currentTime);
 
-          // 3. OSCILADOR SUB-GRAVE (TRIÂNGULO): Pulso do pistão mono-cilíndrico 390cc
+          // 3. OSCILADOR SUB-GRAVE (SENOIDE PURA): Grave profundo, quente e confortável aos ouvidos
           engineSubOsc = audioCtx.createOscillator();
-          engineSubOsc.type = 'triangle';
-          engineSubOsc.frequency.setValueAtTime(58, audioCtx.currentTime);
+          engineSubOsc.type = 'sine';
+          engineSubOsc.frequency.setValueAtTime(45, audioCtx.currentTime);
 
           engineGain = audioCtx.createGain();
           engineGain.gain.setValueAtTime(0, audioCtx.currentTime);
@@ -1354,20 +1354,20 @@
           engineOsc.start();
           engineSubOsc.start();
 
-          // 4. TURBO OSCILADOR: Assobio de turbina esportiva
+          // 4. TURBO OSCILADOR: Assobio suave e agradável
           turboOsc = audioCtx.createOscillator();
           turboGain = audioCtx.createGain();
           turboOsc.type = 'sine';
-          turboOsc.frequency.setValueAtTime(320, audioCtx.currentTime);
+          turboOsc.frequency.setValueAtTime(260, audioCtx.currentTime);
           turboGain.gain.setValueAtTime(0, audioCtx.currentTime);
 
           turboOsc.connect(turboGain);
           turboGain.connect(audioCtx.destination);
           turboOsc.start();
 
-          // 5. CANAL MASTER DE BGM (MÚSICA ARCADE)
+          // 5. CANAL MASTER DE BGM (MÚSICA ARCADE ENERGÉTICA E NÍTIDA)
           bgmGain = audioCtx.createGain();
-          bgmGain.gain.setValueAtTime(0.16, audioCtx.currentTime);
+          bgmGain.gain.setValueAtTime(0.38, audioCtx.currentTime);
           bgmGain.connect(audioCtx.destination);
         }
       }
@@ -1396,30 +1396,30 @@
         const bassFreq = BGM_BASS_PATTERN[bgmStep];
         const leadFreq = BGM_LEAD_PATTERN[bgmStep];
 
-        // Nota de Contra-baixo synth
+        // Nota de Contra-baixo synth encorpado
         if (bassFreq > 0) {
           try {
             const bOsc = audioCtx.createOscillator();
             const bGain = audioCtx.createGain();
             bOsc.type = 'triangle';
             bOsc.frequency.setValueAtTime(bassFreq, curT);
-            bGain.gain.setValueAtTime(0.24, curT);
-            bGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.11);
+            bGain.gain.setValueAtTime(0.35, curT);
+            bGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.12);
             bOsc.connect(bGain);
             bGain.connect(bgmGain);
             bOsc.start(curT);
-            bOsc.stop(curT + 0.11);
+            bOsc.stop(curT + 0.12);
           } catch(e) {}
         }
 
-        // Nota melódica de sintetizador
+        // Nota melódica de sintetizador alegre e vibrante
         if (leadFreq > 0) {
           try {
             const lOsc = audioCtx.createOscillator();
             const lGain = audioCtx.createGain();
             lOsc.type = 'sine';
             lOsc.frequency.setValueAtTime(leadFreq, curT);
-            lGain.gain.setValueAtTime(0.18, curT);
+            lGain.gain.setValueAtTime(0.30, curT);
             lGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.18);
             lOsc.connect(lGain);
             lGain.connect(bgmGain);
@@ -1433,14 +1433,14 @@
           try {
             const kOsc = audioCtx.createOscillator();
             const kGain = audioCtx.createGain();
-            kOsc.frequency.setValueAtTime(130, curT);
-            kOsc.frequency.exponentialRampToValueAtTime(42, curT + 0.07);
-            kGain.gain.setValueAtTime(0.26, curT);
-            kGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.07);
+            kOsc.frequency.setValueAtTime(140, curT);
+            kOsc.frequency.exponentialRampToValueAtTime(45, curT + 0.08);
+            kGain.gain.setValueAtTime(0.38, curT);
+            kGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.08);
             kOsc.connect(kGain);
             kGain.connect(bgmGain);
             kOsc.start(curT);
-            kOsc.stop(curT + 0.07);
+            kOsc.stop(curT + 0.08);
           } catch(e) {}
         }
 
@@ -1450,8 +1450,8 @@
             const hOsc = audioCtx.createOscillator();
             const hGain = audioCtx.createGain();
             hOsc.type = 'triangle';
-            hOsc.frequency.setValueAtTime(1800, curT);
-            hGain.gain.setValueAtTime(0.08, curT);
+            hOsc.frequency.setValueAtTime(1600, curT);
+            hGain.gain.setValueAtTime(0.12, curT);
             hGain.gain.exponentialRampToValueAtTime(0.001, curT + 0.04);
             hOsc.connect(hGain);
             hGain.connect(bgmGain);
@@ -1478,61 +1478,80 @@
       }
     }
 
-    // Locução com Inteligência do Navegador (Web Speech API)
-    function speakText(text, priority = false) {
+    function cancelSpeech() {
+      if ('speechSynthesis' in window) {
+        try { window.speechSynthesis.cancel(); } catch (e) {}
+      }
+    }
+
+    // Locução com Inteligência do Navegador (Web Speech API) - Sempre limpa anteriores para não atrasar
+    function speakText(text) {
       if (!soundEnabled || !('speechSynthesis' in window)) return;
       try {
-        if (priority) window.speechSynthesis.cancel();
+        window.speechSynthesis.cancel();
         const utter = new SpeechSynthesisUtterance(text);
         utter.lang = 'pt-BR';
-        utter.rate = 1.15;
-        utter.pitch = 1.05;
+        utter.rate = 1.25; // Fala rápida e direta
+        utter.pitch = 1.02;
         window.speechSynthesis.speak(utter);
       } catch (e) {}
+    }
+
+    function stopEngineSound() {
+      if (!audioCtx) return;
+      try {
+        if (engineGain) {
+          engineGain.gain.cancelScheduledValues(audioCtx.currentTime);
+          engineGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        }
+        if (turboGain) {
+          turboGain.gain.cancelScheduledValues(audioCtx.currentTime);
+          turboGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        }
+      } catch(e) {}
     }
 
     function updateEngineSound(currentSpeed, isNitroActive) {
       if (!soundEnabled || !audioCtx || !engineGain) return;
 
       if (gameState !== STATE.RACING && !isGridCountdown) {
-        engineGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
-        if (turboGain) turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
+        stopEngineSound();
         return;
       }
 
-      // 1. ÁUDIO NO GRID DE LARGADA: Marcha lenta acelerando conforme o semáforo
+      // 1. ÁUDIO NO GRID DE LARGADA: Marcha lenta aveludada acelerando conforme o semáforo
       if (isGridCountdown) {
-        const idleRpm = 115 + (gridRevBoost * 115); // Sobe de 115Hz até 230Hz!
-        const subRpm = 58 + (gridRevBoost * 58);
-        const filterCutoff = 1100 + (gridRevBoost * 950); // Abre o filtro até 2050Hz
+        const idleRpm = 75 + (gridRevBoost * 55); // 75Hz a 130Hz (som quente de pistão)
+        const subRpm = 42 + (gridRevBoost * 28);
+        const filterCutoff = 240 + (gridRevBoost * 120); // 240Hz a 360Hz (corta todo agudo estridente)
 
         engineOsc.frequency.setTargetAtTime(idleRpm, audioCtx.currentTime, 0.04);
         if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subRpm, audioCtx.currentTime, 0.04);
         if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
 
-        const idleVolume = 0.22 + (gridRevBoost * 0.16); // Volume nítido no alto-falante
+        const idleVolume = 0.05 + (gridRevBoost * 0.04); // Volume suave de 0.05 a 0.09
         engineGain.gain.setTargetAtTime(idleVolume, audioCtx.currentTime, 0.04);
         return;
       }
 
-      // 2. ÁUDIO NA CORRIDA: Motor roncando alto com giro dinâmico
+      // 2. ÁUDIO NA CORRIDA: Ronco suave, encorpado e esportivo
       const normSpeed = Math.max(0.1, Math.min(1.0, currentSpeed / 240));
-      const rpmFreq = 115 + (normSpeed * 155); // 115Hz a 270Hz
-      const subFreq = 58 + (normSpeed * 75);
-      const filterCutoff = 1200 + (normSpeed * 1200); // 1200Hz a 2400Hz
+      const rpmFreq = 80 + (normSpeed * 70); // 80Hz a 150Hz
+      const subFreq = 45 + (normSpeed * 35);
+      const filterCutoff = 260 + (normSpeed * 160); // 260Hz a 420Hz (máximo conforto)
 
       engineOsc.frequency.setTargetAtTime(rpmFreq, audioCtx.currentTime, 0.04);
       if (engineSubOsc) engineSubOsc.frequency.setTargetAtTime(subFreq, audioCtx.currentTime, 0.04);
       if (engineFilter) engineFilter.frequency.setTargetAtTime(filterCutoff, audioCtx.currentTime, 0.04);
 
-      const targetGain = player.isBraking ? 0.16 : (isNitroActive ? 0.36 : 0.28);
+      const targetGain = player.isBraking ? 0.05 : (isNitroActive ? 0.13 : 0.08);
       engineGain.gain.setTargetAtTime(targetGain, audioCtx.currentTime, 0.04);
 
       if (isNitroActive) {
-        turboOsc.frequency.setTargetAtTime(320 + normSpeed * 160, audioCtx.currentTime, 0.04);
-        turboGain.gain.setTargetAtTime(0.18, audioCtx.currentTime, 0.04);
+        turboOsc.frequency.setTargetAtTime(260 + normSpeed * 100, audioCtx.currentTime, 0.04);
+        turboGain.gain.setTargetAtTime(0.07, audioCtx.currentTime, 0.04);
       } else {
-        turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.08);
+        turboGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.06);
       }
     }
 
@@ -2605,6 +2624,9 @@
 
     function triggerCrash() {
       gameState = STATE.GAMEOVER;
+      stopEngineSound(); // Desliga o barulho do carro imediatamente ao bater!
+      cancelSpeech();    // Corta qualquer narração atrasada
+      setBgmVolume(0.38); // Continua a musiquinha gostosa no Game Over!
       playSound('crash');
       cameraShake = 20;
       flashColor = '#ffffff';
@@ -2630,7 +2652,9 @@
 
     function triggerPodiumVictory() {
       gameState = STATE.PODIUM;
-      updateEngineSound(0, false);
+      stopEngineSound(); // Desliga o barulho do motor no pódio!
+      cancelSpeech();
+      setBgmVolume(0.42); // Música triunfal comemorativa no pódio!
       playSound('vigarista_beat');
       cameraShake = 12;
       flashColor = '#facc15';
@@ -2700,6 +2724,9 @@
        LOOP PRINCIPAL (UPDATE & RENDER)
        ========================================================================== */
     function update() {
+      if (gameState !== STATE.RACING && !isGridCountdown) {
+        stopEngineSound();
+      }
       if (gameState === STATE.RACING) {
         if (isGridCountdown) {
           // Karts 100% RIGOROSAMENTE PARADOS no grid de largada!
@@ -3275,13 +3302,14 @@
         mariScreen.style.display = 'flex';
 
         // Mari fala com o piloto!
-        speakText(`Piloto ${customName}, sua vaga na bateria das vinte e trinta está confirmada! Vá para o grid com o Kawan!`);
+        speakText(`Vaga confirmada, piloto ${customName}! Partiu pro grid!`);
       });
     }
 
     if (btnToGrid) {
       btnToGrid.addEventListener('click', () => {
         initAudio();
+        cancelSpeech(); // Cancela na hora qualquer fala anterior da Mari para não atrasar no grid!
         playSound('button_click');
         mariScreen.style.display = 'none';
         triggerGridSequence();
@@ -3303,7 +3331,7 @@
 
       isGridCountdown = true; // CONGELA física e colisões!
       gridRevBoost = 0;
-      setBgmVolume(0.05); // BGM abaixa suavemente para os motores e beeps brilharem!
+      setBgmVolume(0.25); // BGM presente e animada no grid!
 
       rivals = [];
       trackItems = [];
@@ -3360,7 +3388,7 @@
         triggerFlash();
         playSound('camera_shutter');
         kawanMsg.textContent = '📸 SORRIAM! Mais um clique na reta principal!';
-        speakText("Atenção pilotos, olhem para a foto!");
+        speakText("Sorriam pra foto!");
       }, 700);
 
       // Disparo de Flash 2 do Kawan (1500ms)
@@ -3403,11 +3431,12 @@
         playSound('start_go');
         statusLabel.textContent = '🟢 BANDEIRADA VERDE! ACELERA!';
         addFloatingText("🟢 LARGADA! PISA FUNDO!", V_W / 2, 80, '#22c55e');
-        speakText("Largada liberada! Acelera!", true);
+        cancelSpeech();
+        speakText("Acelera!");
 
         isGridCountdown = false; // DESCONGELA a corrida! Física ativa!
         gridRevBoost = 0;
-        setBgmVolume(0.14); // BGM volta a empolgar junto com o ronco do motor!
+        setBgmVolume(0.38); // BGM empolgante, animada e com volume nítido!
         player.speed = player.baseSpeed; // Arrancada em 100 KM/H!
         raceStartTime = Date.now();
         currentLapStartTime = Date.now();
